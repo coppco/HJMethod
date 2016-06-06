@@ -10,7 +10,7 @@
 
 @implementation UIColor (HJExtension)
 
-+ (UIColor *)colorFromHexString:(NSString *)string {
++ (UIColor *)hj_colorFromHexString:(NSString *)string {
     if (string.length == 0) {
         return [UIColor clearColor];
     }
@@ -21,9 +21,9 @@
     unsigned hexNum;
     if (![scanner scanHexInt:&hexNum]) return [UIColor clearColor];
    
-    return [self colorFromRGBValue:hexNum];
+    return [self hj_colorFromRGBValue:hexNum];
 }
-+ (UIColor *)colorFromRGBValue:(UInt32)value {
++ (UIColor *)hj_colorFromRGBValue:(UInt32)value {
     float red = ((value >> 24) & 0xFF)/255.0f;
     float green = ((value >> 16) & 0xFF)/255.0f;
     float blue = ((value >> 8) & 0xFF)/255.0f;
@@ -31,13 +31,14 @@
     
     return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
 }
-+ (UIColor *)randomColor {
++ (UIColor *)hj_randomColor {
     return [UIColor colorWithRed:(arc4random() % 256) / 255.0f
                            green:(arc4random() % 256) / 255.0f
                             blue:(arc4random() % 256) / 255.0f
                            alpha:1];
 }
-+ (UIColor *)colorWithPatternImage:(NSString *)imageName {
-    
+
++ (UIColor *)hj_colorWithImage:(NSString *)imageName {
+    return [UIColor colorWithPatternImage:[UIImage imageNamed:imageName]];
 }
 @end

@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+typedef  enum {
+    HJViewSnapshotsTypeNone,  //不保存
+    HJViewSnapshotsTypePhotes,  //相册  保存到相册会自动在沙盒缓存
+    HJViewSnapshotsTypeSandbox,  //沙盒
+    HJViewSnapshotsTypeBoth  //沙盒和相册
+}HJViewSnapshotsType;
+
 @interface UIView (HJExtension)
 
 /*==============属性可以设置也可以获取================*/
@@ -58,4 +65,12 @@
 /**获取UIView对象所在的控制器,不存在返回nil*/
 @property (nonatomic, strong, readonly)UIViewController *viewController;
 
+/**
+ *  @author XHJ, 16-06-06 09:06:51
+ *
+ *  快照
+ *
+ *  @return view的截图
+ */
+- (UIImage *)hj_snapshotsWithType:(HJViewSnapshotsType)type;
 @end

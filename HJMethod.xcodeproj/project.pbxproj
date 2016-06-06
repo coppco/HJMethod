@@ -17,6 +17,10 @@
 		CC400EB11CFFD9B300A1B490 /* HJMethodUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CC400EB01CFFD9B300A1B490 /* HJMethodUITests.m */; };
 		CC400EC61CFFDBF300A1B490 /* UIView+HJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = CC400EC51CFFDBF300A1B490 /* UIView+HJExtension.m */; };
 		CC400ECB1CFFF48000A1B490 /* UIColor+HJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = CC400ECA1CFFF48000A1B490 /* UIColor+HJExtension.m */; };
+		CC9817F61D0507E1005301CF /* NSString+HJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9817F51D0507E1005301CF /* NSString+HJExtension.m */; };
+		CC9818071D053E83005301CF /* HJFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9818061D053E83005301CF /* HJFunction.m */; };
+		CC98180A1D053EC5005301CF /* NSDate+HJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9818091D053EC5005301CF /* NSDate+HJExtension.m */; };
+		CC98180E1D05409A005301CF /* UIImage+HJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = CC98180D1D05409A005301CF /* UIImage+HJExtension.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +63,14 @@
 		CC400EC71CFFDDB400A1B490 /* HJCommonDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HJCommonDefine.h; sourceTree = "<group>"; };
 		CC400EC91CFFF48000A1B490 /* UIColor+HJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HJExtension.h"; sourceTree = "<group>"; };
 		CC400ECA1CFFF48000A1B490 /* UIColor+HJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HJExtension.m"; sourceTree = "<group>"; };
+		CC9817F41D0507E1005301CF /* NSString+HJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HJExtension.h"; sourceTree = "<group>"; };
+		CC9817F51D0507E1005301CF /* NSString+HJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HJExtension.m"; sourceTree = "<group>"; };
+		CC9818051D053E83005301CF /* HJFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJFunction.h; sourceTree = "<group>"; };
+		CC9818061D053E83005301CF /* HJFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJFunction.m; sourceTree = "<group>"; };
+		CC9818081D053EC5005301CF /* NSDate+HJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+HJExtension.h"; sourceTree = "<group>"; };
+		CC9818091D053EC5005301CF /* NSDate+HJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+HJExtension.m"; sourceTree = "<group>"; };
+		CC98180C1D05409A005301CF /* UIImage+HJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+HJExtension.h"; sourceTree = "<group>"; };
+		CC98180D1D05409A005301CF /* UIImage+HJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+HJExtension.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				CC400EC31CFFDB8000A1B490 /* HJTool.h */,
+				CC9818041D053E83005301CF /* Function */,
 				CC400EBF1CFFDAE200A1B490 /* Category */,
 				CC400EC01CFFDAE200A1B490 /* CustomizedLib */,
 				CC400EC11CFFDAE200A1B490 /* Defines */,
@@ -163,6 +176,9 @@
 		CC400EBF1CFFDAE200A1B490 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				CC98180B1D054085005301CF /* UIImage */,
+				CC9818031D053E79005301CF /* NSDate */,
+				CC9817F01D05076E005301CF /* NSString */,
 				CC400EC81CFFF46200A1B490 /* UIColor */,
 				CC400EC21CFFDB0D00A1B490 /* UIView */,
 			);
@@ -200,6 +216,42 @@
 				CC400ECA1CFFF48000A1B490 /* UIColor+HJExtension.m */,
 			);
 			path = UIColor;
+			sourceTree = "<group>";
+		};
+		CC9817F01D05076E005301CF /* NSString */ = {
+			isa = PBXGroup;
+			children = (
+				CC9817F41D0507E1005301CF /* NSString+HJExtension.h */,
+				CC9817F51D0507E1005301CF /* NSString+HJExtension.m */,
+			);
+			path = NSString;
+			sourceTree = "<group>";
+		};
+		CC9818031D053E79005301CF /* NSDate */ = {
+			isa = PBXGroup;
+			children = (
+				CC9818081D053EC5005301CF /* NSDate+HJExtension.h */,
+				CC9818091D053EC5005301CF /* NSDate+HJExtension.m */,
+			);
+			path = NSDate;
+			sourceTree = "<group>";
+		};
+		CC9818041D053E83005301CF /* Function */ = {
+			isa = PBXGroup;
+			children = (
+				CC9818051D053E83005301CF /* HJFunction.h */,
+				CC9818061D053E83005301CF /* HJFunction.m */,
+			);
+			path = Function;
+			sourceTree = "<group>";
+		};
+		CC98180B1D054085005301CF /* UIImage */ = {
+			isa = PBXGroup;
+			children = (
+				CC98180C1D05409A005301CF /* UIImage+HJExtension.h */,
+				CC98180D1D05409A005301CF /* UIImage+HJExtension.m */,
+			);
+			path = UIImage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -332,11 +384,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC98180A1D053EC5005301CF /* NSDate+HJExtension.m in Sources */,
+				CC9818071D053E83005301CF /* HJFunction.m in Sources */,
 				CC400E931CFFD9B300A1B490 /* ViewController.m in Sources */,
 				CC400E901CFFD9B300A1B490 /* AppDelegate.m in Sources */,
 				CC400ECB1CFFF48000A1B490 /* UIColor+HJExtension.m in Sources */,
 				CC400EC61CFFDBF300A1B490 /* UIView+HJExtension.m in Sources */,
+				CC98180E1D05409A005301CF /* UIImage+HJExtension.m in Sources */,
 				CC400E8D1CFFD9B300A1B490 /* main.m in Sources */,
+				CC9817F61D0507E1005301CF /* NSString+HJExtension.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

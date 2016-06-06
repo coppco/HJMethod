@@ -18,7 +18,7 @@
  *
  *  @return 返回颜色
  */
-+ (UIColor *)colorFromHexString:(NSString *)string;
++ (UIColor *)hj_colorFromHexString:(NSString *)string;
 
 
 /**
@@ -30,7 +30,7 @@
  *
  *  @return 返回颜色
  */
-+ (UIColor *)colorFromRGBValue:(UInt32)value;
++ (UIColor *)hj_colorFromRGBValue:(UInt32)value;
 
 
 /**
@@ -40,16 +40,16 @@
  *
  *  @return 返回颜色
  */
-+ (UIColor *)randomColor;
++ (UIColor *)hj_randomColor;
 
 /**
  *  @author XHJ, 16-06-03 18:06:04
  *
- *  
+ *  图片转color
  *
- *  @param image <#image description#>
+ *  @param image 图片名称
  *
- *  @return <#return value description#>
+ *  @return 返回颜色
  */
-+ (UIColor *)colorWithImage:(UIImage *)image;
++ (UIColor *)hj_colorWithImage:(NSString *)image;
 @end
