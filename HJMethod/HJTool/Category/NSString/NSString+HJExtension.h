@@ -8,14 +8,27 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#include <CommonCrypto/CommonCrypto.h>  //加密用到
+#include <zlib.h>  //crc32 用到  crc32需要导入libz.tbd
 /*拼音类型*/
 typedef NS_ENUM(NSInteger, PinYinType) {
     PinYinTypePhoneticSymbol,  //带音标
     PinYinTypeOnly   //不带音标
 };
 
+//加密类型
+typedef NS_ENUM(NSInteger, EncryptType) {
+    EncryptTypeMD2,
+    EncryptTypeMD4,
+    EncryptTypeMD5,
+    EncryptTypeSHA1,
+    EncryptTypeSHA224,
+    EncryptTypeSHA256,
+    EncryptTypeSHA384,
+    EncryptTypeSHA512
+};
 @interface NSString (HJExtension)
-/*=========沙盒路径相关=========*/
+#pragma - mark 路径相关
 
 /**
  *  Documents路径
@@ -69,7 +82,7 @@ typedef NS_ENUM(NSInteger, PinYinType) {
  */
 + (NSString *)hj_pathCachesSubPath:(NSString *)subPath fileName:(NSString *)fileName;
 
-/*========字符串判断相关=========*/
+#pragma - mark 字符串判断相关
 
 /**
  *  判断字符串是否为空
@@ -165,6 +178,8 @@ typedef NS_ENUM(NSInteger, PinYinType) {
  */
 - (NSString *)hj_getGenderFromIndentifyNumber;
 
+#pragma - mark 字符串size
+
 /**
  *  指定文本的绘制的范围,返回文本的宽高
  *
@@ -203,4 +218,110 @@ typedef NS_ENUM(NSInteger, PinYinType) {
  *  @return 
  */
 - (CGFloat)hj_widthForHeight:(CGFloat)height font:(UIFont *)font;
+
+#pragma - mark 加密相关
+/**
+ *  加密后的字符串
+ *
+ *  @param data   数据
+ *  @param type 加密类型
+ *
+ *  @return
+ */
++ (NSString *)hj_safedStringWithData:(NSData *)data type:(EncryptType)type;
+
+/**
+ *  加密后的字符串
+ *
+ *  @param type 加密类型
+ *
+ *  @return
+ */
+- (NSString *)hj_safedStringWithType:(EncryptType)type;
+
+/**
+ *  加密后的字符串
+ *
+ *  @param type 加密类型
+ *
+ *  @return
+ */
+- (NSData *)hj_safedDataWithType:(EncryptType)type;
+
+/**
+ *  加密后的数据
+ *
+ *  @param data 数据
+ *  @param type 类型
+ *
+ *  @return 
+ */
++ (NSData *)hj_safedDataWithData:(NSData *)data type:(EncryptType)type;
+
+/**
+ *  crc32加密后的字符串
+ *
+ *  @return
+ */
+- (NSString *)hj_safedCRC32String;
+
+/**
+ *  crc32加密后的字符串
+ *
+ *  @param data 数据
+ *
+ *  @return
+ */
++ (NSString *)hj_safedCRC32StringForData:(NSData *)data;
+
+/**
+ *  HMAC加密
+ *
+ *  @param data 需要加密的数据
+ *  @param type 加密类型
+ *  @param key  key
+ *
+ *  @return
+ */
++ (NSString *)hj_safedStringHMACWithData:(NSData *)data type:(CCHmacAlgorithm)type key:(NSString *)key;
+
+/**
+ *  对字符串进行HMAC加密
+ *
+ *  @param hmacType 加密类型
+ *  @param key  key
+ *
+ *  @return 
+ */
+- (NSString *)hj_safedStringHMACWithType:(CCHmacAlgorithm)hmacType key:(NSString *)key;
+
+/**
+ *  md5加密字符串
+ *
+ *  @return
+ */
+- (NSString *)md5String;
+
+/**
+ *  sha1加密字符串
+ *
+ *  @return 
+ */
+- (NSString *)sha1String;
+
+/**
+ *  是否包含emoji字符
+ *
+ *  @return
+ */
+- (BOOL)containsEmoji;
+
+/**
+ *  文件大小转成字符串如:1.20K
+ *
+ *  @param sizeOfByte 文件大小
+ *
+ *  @return
+ */
++ (NSString *)sizeDisplayWithByte:(CGFloat)sizeOfByte;
 @end

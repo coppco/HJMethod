@@ -17,10 +17,14 @@
 #import "NSDate+HJExtension.h"  //NSDate的分类
 #import "UIImage+HJExtension.h"  //UIImage的分类
 
+/*=========自定义宏=========*/
 #import "HJCommonDefine.h"   //常用宏定义
 
+/*=========功能函数=========*/
 #import "HJFunction.h"  //一些功能函数
 
+/*=========TouchID=========*/
+#import "TouchID.h"
 
 #endif
 

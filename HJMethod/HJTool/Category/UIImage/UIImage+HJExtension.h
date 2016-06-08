@@ -45,4 +45,18 @@
  *  @return 返回添加水印后的图片
  */
 - (UIImage *)hj_addLogo:(UIImage *)logo;
+
+/**
+ *  手机屏幕截图(有状态栏)
+ *
+ *  @return
+ */
++ (UIImage *)hj_imageWithScreenshot;
+
+/**
+ *  手机屏幕截图无状态栏
+ *
+ *  @return 
+ */
++ (UIImage *)HJ_imageWithScreenshotNoStatusBar;
 @end

@@ -10,6 +10,7 @@
 #import "HJTool.h"
 #import <Availability.h>
 
+
 @interface ViewController ()
 
 @end
@@ -36,12 +37,27 @@
     XHJLog(@"%ld-%ld-%ld", date.year, date.month, date.day);
     [sti hj_isValidIndentifyNumber];
     
-    XHJLog(@"%@", NSStringFromCGSize([@"dsfjdslj大幅度是浪费了第三方了电视剧反垄断法律是放假了圣诞节发的是减肥了多少级分类的解放路上几分的减肥减肥fsdljfsldjflsjfdfjklsdfjslfldsjfldsjfdls" hj_sizeWithFont:[UIFont systemFontOfSize:17]]));
+    XHJLog(@"%.0f", [@"dsfjdslj大幅度是浪费了第三方了电视剧反垄断法律是放假了圣诞节发的是减肥了多少级分类的解放路上几分的减肥减肥fsdljfsldjflsjfdfjklsdfjslfldsjfldsjfdls" hj_heightForWidth:100 font:[UIFont systemFontOfSize:17]]);
     
-    [self.view hj_snapshotsWithType:(HJViewSnapshotsTypeSandbox)];
+//    hj_callTelephoneNumber(@"15105713500", NO);
+
+    NSString *string = hj_dictionaryOrArrayTransformToJSONString(@{@"a":@[@1, @2, @3], @"b":@"我们"});
+    XHJLog(@"字符串%@", string);
+   NSDictionary *dic =  hj_JSONTransformToDictionaryOrArray(@"{\"a\":[1,2,3],\"b\":\"我们\"}");
+    XHJLog(@"字典%@", dic);
+
+    
+    [TouchID showTouchIdOnCompletion:^(BOOL success, NSError *authenticationError) {
+        
+    } failed:^(NSError *authenticationError) {
+        
+    }];
+    
+    XHJLog(@"%@", [@"123456" hj_safedStringWithType:(EncryptTypeMD5)]);
+//    [self.view hj_snapshotsWithType:(HJViewSnapshotsTypeSandbox)];
     // Do any additional setup after loading the view, typically from a nib.
 }
-
+- (void)animationDidStart:(CAAnimation *)anim {}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

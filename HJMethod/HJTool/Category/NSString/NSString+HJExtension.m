@@ -8,8 +8,9 @@
 
 #import "NSString+HJExtension.h"
 
-@implementation NSString (HJExtension)
 
+@implementation NSString (HJExtension)
+#pragma - mark 路径相关
 + (NSString *)hj_pathDocuments {
     return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
 }
@@ -45,7 +46,7 @@
     }
     return [path stringByAppendingPathComponent:fileName];
 }
-/*========字符串判断相关=========*/
+#pragma - mark 字符串判断
 
 - (BOOL)hj_isEmpty {
     return self.length == 0;
@@ -245,6 +246,7 @@
     return (i % 2 == 1) ? @"man" : @"woman";
 }
 
+#pragma - mark 字符串size
 - (CGSize)hj_sizeWithFont:(UIFont *)font size:(CGSize)size {
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     if (font != nil) {
@@ -264,4 +266,318 @@
 - (CGFloat)hj_widthForHeight:(CGFloat)height font:(UIFont *)font {
     return [self hj_sizeWithFont:font size:CGSizeMake(10000, height)].width;
 }
+
+#pragma - mark 安全相关
+//md5  sha加密
++ (NSString *)hj_safedStringWithData:(NSData *)data type:(EncryptType)type {
+    if (!data) {
+        return nil;
+    }
+    NSString *encryptString;
+    switch (type) {
+        case EncryptTypeMD2:
+        {
+            unsigned char result[CC_MD2_DIGEST_LENGTH];
+            CC_MD2(data.bytes, (CC_LONG)data.length, result);
+            encryptString = [NSString stringWithFormat:
+                             @"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",
+                             result[0], result[1], result[2], result[3],
+                             result[4], result[5], result[6], result[7],
+                             result[8], result[9], result[10], result[11],
+                             result[12], result[13], result[14], result[15]
+                             ];
+        }
+            break;
+        case EncryptTypeMD4:
+        {
+            unsigned char result[CC_MD4_DIGEST_LENGTH];
+            CC_MD4(data.bytes, (CC_LONG)data.length, result);
+            encryptString = [NSString stringWithFormat:
+                             @"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",
+                             result[0], result[1], result[2], result[3],
+                             result[4], result[5], result[6], result[7],
+                             result[8], result[9], result[10], result[11],
+                             result[12], result[13], result[14], result[15]
+                             ];
+        }
+            break;
+        case EncryptTypeMD5:
+        {
+            unsigned char result[CC_MD5_DIGEST_LENGTH];
+            CC_MD5(data.bytes, (CC_LONG)data.length, result);
+            encryptString = [NSString stringWithFormat:
+                             @"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",
+                             result[0], result[1], result[2], result[3],
+                             result[4], result[5], result[6], result[7],
+                             result[8], result[9], result[10], result[11],
+                             result[12], result[13], result[14], result[15]
+                             ];
+        }
+            break;
+        case EncryptTypeSHA1:
+        {
+            unsigned char result[CC_SHA1_DIGEST_LENGTH];
+            CC_SHA1(data.bytes, (CC_LONG)data.length, result);
+            NSMutableString *hash = [NSMutableString stringWithCapacity:CC_SHA1_DIGEST_LENGTH * 2];
+            for (int i = 0; i < CC_SHA1_DIGEST_LENGTH; i++) {
+                [hash appendFormat:@"%02x", result[i]];
+            }
+            encryptString = hash;
+        }
+            break;
+        case EncryptTypeSHA224:
+        {
+            unsigned char result[CC_SHA224_DIGEST_LENGTH];
+            CC_SHA224(data.bytes, (CC_LONG)data.length, result);
+            NSMutableString *hash = [NSMutableString stringWithCapacity:CC_SHA224_DIGEST_LENGTH * 2];
+            for (int i = 0; i < CC_SHA224_DIGEST_LENGTH; i++) {
+                [hash appendFormat:@"%02x", result[i]];
+            }
+            encryptString = hash;
+        }
+            break;
+        case EncryptTypeSHA256:
+        {
+            unsigned char result[CC_SHA256_DIGEST_LENGTH];
+            CC_SHA256(data.bytes, (CC_LONG)data.length, result);
+            NSMutableString *hash = [NSMutableString stringWithCapacity:CC_SHA256_DIGEST_LENGTH * 2];
+            for (int i = 0; i < CC_SHA256_DIGEST_LENGTH; i++) {
+                [hash appendFormat:@"%02x", result[i]];
+            }
+            encryptString = hash;
+        }
+            break;
+        case EncryptTypeSHA384:
+        {
+            unsigned char result[CC_SHA384_DIGEST_LENGTH];
+            CC_SHA384(data.bytes, (CC_LONG)data.length, result);
+            NSMutableString *hash = [NSMutableString stringWithCapacity:CC_SHA384_DIGEST_LENGTH * 2];
+            for (int i = 0; i < CC_SHA384_DIGEST_LENGTH; i++) {
+                [hash appendFormat:@"%02x", result[i]];
+            }
+            encryptString = hash;
+        }
+            break;
+        case EncryptTypeSHA512:
+        {
+            unsigned char result[CC_SHA512_DIGEST_LENGTH];
+            CC_SHA512(data.bytes, (CC_LONG)data.length, result);
+            NSMutableString *hash = [NSMutableString stringWithCapacity:CC_SHA512_DIGEST_LENGTH * 2];
+            for (int i = 0; i < CC_SHA512_DIGEST_LENGTH; i++) {
+                [hash appendFormat:@"%02x", result[i]];
+            }
+            encryptString = hash;
+        }
+            break;
+        default:
+            return nil;
+            break;
+    }
+    return encryptString;
+}
+
+- (NSString *)hj_safedStringWithType:(EncryptType)type {
+    NSData *data = [self dataUsingEncoding:NSUTF8StringEncoding];
+    return [[self class] hj_safedStringWithData:data type:type];
+}
+- (NSData *)hj_safedDataWithType:(EncryptType)type {
+    return [[self class] hj_safedDataWithData:[self dataUsingEncoding:NSUTF8StringEncoding] type:type];
+}
++ (NSData *)hj_safedDataWithData:(NSData *)data type:(EncryptType)type {
+    if (!data) {
+        return nil;
+    }
+    NSData *encryptData = nil;
+    switch (type) {
+        case EncryptTypeMD2:
+        {
+            unsigned char result[CC_MD2_DIGEST_LENGTH];
+            CC_MD2(data.bytes, (CC_LONG)data.length, result);
+            encryptData = [NSData dataWithBytes:result length:CC_MD2_DIGEST_LENGTH];
+        }
+            break;
+        case EncryptTypeMD4:
+        {
+            unsigned char result[CC_MD4_DIGEST_LENGTH];
+            CC_MD4(data.bytes, (CC_LONG)data.length, result);
+            encryptData = [NSData dataWithBytes:result length:CC_MD4_DIGEST_LENGTH];
+        }
+            break;
+        case EncryptTypeMD5:
+        {
+            unsigned char result[CC_MD5_DIGEST_LENGTH];
+            CC_MD5(data.bytes, (CC_LONG)data.length, result);
+            encryptData = [NSData dataWithBytes:result length:CC_MD5_DIGEST_LENGTH];
+        }
+            break;
+        case EncryptTypeSHA1:
+        {
+            unsigned char result[CC_SHA1_DIGEST_LENGTH];
+            CC_SHA1(data.bytes, (CC_LONG)data.length, result);
+            encryptData = [NSData dataWithBytes:result length:CC_SHA1_DIGEST_LENGTH];
+        }
+            break;
+        case EncryptTypeSHA224:
+        {
+            unsigned char result[CC_SHA224_DIGEST_LENGTH];
+            CC_SHA224(data.bytes, (CC_LONG)data.length, result);
+            encryptData = [NSData dataWithBytes:result length:CC_SHA224_DIGEST_LENGTH];
+        }
+            break;
+        case EncryptTypeSHA256:
+        {
+            unsigned char result[CC_SHA256_DIGEST_LENGTH];
+            CC_SHA256(data.bytes, (CC_LONG)data.length, result);
+            encryptData = [NSData dataWithBytes:result length:CC_SHA256_DIGEST_LENGTH];
+        }
+            break;
+        case EncryptTypeSHA384:
+        {
+            unsigned char result[CC_SHA384_DIGEST_LENGTH];
+            CC_SHA384(data.bytes, (CC_LONG)data.length, result);
+            encryptData = [NSData dataWithBytes:result length:CC_SHA384_DIGEST_LENGTH];
+        }
+            break;
+        case EncryptTypeSHA512:
+        {
+            unsigned char result[CC_SHA512_DIGEST_LENGTH];
+            CC_SHA512(data.bytes, (CC_LONG)data.length, result);
+            encryptData = [NSData dataWithBytes:result length:CC_SHA512_DIGEST_LENGTH];
+        }
+            break;
+        default:
+            return nil;
+            break;
+    }
+    return encryptData;
+}
+
+//crc32加密
+- (NSString *)hj_safedCRC32String {
+    return [[self class] hj_safedCRC32StringForData:[self dataUsingEncoding:NSUTF8StringEncoding]];
+}
++ (NSString *)hj_safedCRC32StringForData:(NSData *)data {
+    if (!data) {
+        return nil;
+    }
+    uLong result = crc32(0, [data bytes], (uInt)data.length);
+    return [NSString stringWithFormat:@"%08x", (uint32_t)result];
+}
+
+//hmac加密
++ (NSString *)hj_safedStringHMACWithData:(NSData *)data type:(CCHmacAlgorithm)hmacType key:(NSString *)key {
+    if (!data) {
+        return nil;
+    }
+    size_t size;
+    switch (hmacType) {
+        case kCCHmacAlgMD5:
+            size = CC_MD5_DIGEST_LENGTH;
+            break;
+        case kCCHmacAlgSHA1:
+            size = CC_SHA1_DIGEST_LENGTH;
+            break;
+        case kCCHmacAlgSHA224:
+            size = CC_SHA224_DIGEST_LENGTH;
+            break;
+        case kCCHmacAlgSHA256:
+            size = CC_SHA256_DIGEST_LENGTH;
+            break;
+        case kCCHmacAlgSHA384:
+            size = CC_SHA384_DIGEST_LENGTH;
+            break;
+        case kCCHmacAlgSHA512:
+            size = CC_SHA512_DIGEST_LENGTH;
+            break;
+        default:
+            return nil;
+            break;
+    }
+    unsigned char result[size];
+    const char *cKey = [key cStringUsingEncoding:NSUTF8StringEncoding];
+    CCHmac(hmacType, cKey, strlen(cKey), data.bytes, data.length, result);
+    NSMutableString *hash = [NSMutableString stringWithCapacity:size * 2];
+    for (int i = 0; i < size; i++) {
+        [hash appendFormat:@"%02x", result[i]];
+    }
+    return hash;
+}
+
+- (NSString *)hj_safedStringHMACWithType:(CCHmacAlgorithm)hmacType key:(NSString *)key {
+    return [[self class] hj_safedStringHMACWithData:[self dataUsingEncoding:NSUTF8StringEncoding] type:hmacType key:key];
+}
+
+- (NSString *)md5String {
+    return [self hj_safedStringWithType:(EncryptTypeMD5)];
+}
+
+- (NSString *)sha1String {
+    return [self hj_safedStringWithType:(EncryptTypeSHA1)];
+}
+
+-(BOOL)containsEmoji{
+    if (!self || self.length <= 0) {
+        return NO;
+    }
+    __block BOOL returnValue = NO;
+    [self enumerateSubstringsInRange:NSMakeRange(0, [self length]) options:NSStringEnumerationByComposedCharacterSequences usingBlock:
+     ^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop) {
+         
+         const unichar hs = [substring characterAtIndex:0];
+         // surrogate pair
+         if (0xd800 <= hs && hs <= 0xdbff) {
+             if (substring.length > 1) {
+                 const unichar ls = [substring characterAtIndex:1];
+                 const int uc = ((hs - 0xd800) * 0x400) + (ls - 0xdc00) + 0x10000;
+                 if (0x1d000 <= uc && uc <= 0x1f77f) {
+                     returnValue = YES;
+                 }
+             }
+         } else if (substring.length > 1) {
+             const unichar ls = [substring characterAtIndex:1];
+             if (ls == 0x20e3) {
+                 returnValue = YES;
+             }
+             
+         } else {
+             // non surrogate
+             if (0x2100 <= hs && hs <= 0x27ff) {
+                 returnValue = YES;
+             } else if (0x2B05 <= hs && hs <= 0x2b07) {
+                 returnValue = YES;
+             } else if (0x2934 <= hs && hs <= 0x2935) {
+                 returnValue = YES;
+             } else if (0x3297 <= hs && hs <= 0x3299) {
+                 returnValue = YES;
+             } else if (hs == 0xa9 || hs == 0xae || hs == 0x303d || hs == 0x3030 || hs == 0x2b55 || hs == 0x2b1c || hs == 0x2b1b || hs == 0x2b50) {
+                 returnValue = YES;
+             }
+         }
+     }];
+    
+    return returnValue;
+}
+
+//size大小
++ (NSString *)sizeDisplayWithByte:(CGFloat)sizeOfByte{
+    NSString *sizeDisplayStr;
+    if (sizeOfByte < 1024) {
+        sizeDisplayStr = [NSString stringWithFormat:@"%.2f bytes", sizeOfByte];
+    }else{
+        CGFloat sizeOfKB = sizeOfByte/1024;
+        if (sizeOfKB < 1024) {
+            sizeDisplayStr = [NSString stringWithFormat:@"%.2f KB", sizeOfKB];
+        }else{
+            CGFloat sizeOfM = sizeOfKB/1024;
+            if (sizeOfM < 1024) {
+                sizeDisplayStr = [NSString stringWithFormat:@"%.2f M", sizeOfM];
+            }else{
+                CGFloat sizeOfG = sizeOfKB/1024;
+                sizeDisplayStr = [NSString stringWithFormat:@"%.2f G", sizeOfG];
+            }
+        }
+    }
+    return sizeDisplayStr;
+}
 @end
+

@@ -72,4 +72,51 @@
     CGColorSpaceRelease(colorSpace);
     return returnImage;
 }
+
++ (UIImage *)HJ_imageWithScreenshotNoStatusBar {
+    CGSize imageSize = [[UIScreen mainScreen] bounds].size;
+    
+    UIGraphicsBeginImageContextWithOptions(imageSize, NO, 0);
+    
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    for (UIWindow *window in [[UIApplication sharedApplication] windows]) {
+        if ([window screen] == [UIScreen mainScreen]) {
+            
+            CGContextSaveGState(context);
+            CGContextTranslateCTM(context, [window center].x, [window center].y);
+            CGContextConcatCTM(context, [window transform]);
+            CGContextTranslateCTM(context,
+                                  -[window bounds].size.width * [[window layer] anchorPoint].x,
+                                  -[window bounds].size.height * [[window layer] anchorPoint].y);
+            
+            [[window layer] renderInContext:context];
+            
+            CGContextRestoreGState(context);
+        }
+    }
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
+}
++ (UIImage *)hj_imageWithScreenshot {
+    CGSize imageSize = [[UIScreen mainScreen] bounds].size;
+    
+    UIGraphicsBeginImageContextWithOptions(imageSize, NO, 0);
+    
+    for (UIWindow *window in [[UIApplication sharedApplication] windows]) {
+        if ([window screen] == [UIScreen mainScreen]) {
+            [window drawViewHierarchyInRect:[[UIScreen mainScreen] bounds] afterScreenUpdates:NO];
+        }
+    }
+    
+    UIView *statusBar = [[UIApplication sharedApplication] valueForKey:@"statusBar"];
+    [statusBar drawViewHierarchyInRect:[statusBar bounds] afterScreenUpdates:NO];
+    
+    UIImage *screenImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    return screenImage;
+}
 @end
