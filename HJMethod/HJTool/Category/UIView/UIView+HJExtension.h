@@ -7,6 +7,7 @@
 //   UIView的常用属性
 
 #import <UIKit/UIKit.h>
+#import <objc/runtime.h>
 @class HJTipView;
 typedef  enum {
     HJViewSnapshotsTypeNone,  //不保存
@@ -131,8 +132,20 @@ typedef NS_ENUM(NSInteger, DirectionType) {
  */
 - (void)animationCATransitionWithDuration:(NSTimeInterval)duration type:(HJAnimationType)type direction:(DirectionType)direction;
 
-
+/**
+ *  是否自动布局
+ *
+ *  @return YES----->代码布局  NO---->autoLayout
+ */
+- (BOOL)hj_enforceFrameLayout;
 //加载时的动画
+
+/**
+ *  返回自动布局的size
+ *
+ *  @return 
+ */
+- (CGSize)autoLayoutSizeWithWidth:(CGFloat)width;
 
 //无数据或者网络错误时候的显示视图
 /**tipView*/

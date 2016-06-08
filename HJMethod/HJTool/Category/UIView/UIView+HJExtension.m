@@ -359,6 +359,32 @@
     }];
 }
 
+//是否自动布局  YES 代码布局  sizeThatFits:
+- (BOOL)hj_enforceFrameLayout {
+    return [objc_getAssociatedObject(self, _cmd) boolValue];
+}
+
+- (CGSize)autoLayoutSizeWithWidth:(CGFloat)width {
+    CGSize size;
+    if ([self hj_enforceFrameLayout]) {
+        SEL selector = @selector(sizeThatFits:);
+        BOOL inherited = ![self isMemberOfClass:UIView.class];
+        BOOL overrided = [self.class instanceMethodForSelector:selector] != [UIView instanceMethodForSelector:selector];
+        if (inherited && !overrided) {
+            NSAssert(NO, @"view must override '-sizeThatFits:' method if not using auto layout.");
+        }
+        size = [self sizeThatFits:CGSizeMake(width, 0)];
+    } else {
+        NSLayoutConstraint *tempWidthConstraint = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:width];
+        [self addConstraint:tempWidthConstraint];
+        // Auto layout engine does its math
+        size = [self systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+        [self removeConstraint:tempWidthConstraint];
+    }
+    NSLog(@"%@", NSStringFromCGSize(size));
+    return size;
+}
+
 //没有数据或者网络错误的时候
 - (void)configTipViewHasData:(BOOL)hasData hasError:(BOOL)hasError reloadButtonBlock:(void (^)())reloadButtonBlock {
     if (hasData) {
@@ -378,6 +404,9 @@
         [self.tipView configTipViewHasData:hasData hasError:hasError reloadButtonBlock:reloadButtonBlock];
     }
 }
+
+
+
 @end
 
 @implementation HJTipView

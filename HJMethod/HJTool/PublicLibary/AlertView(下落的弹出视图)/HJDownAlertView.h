@@ -1,0 +1,47 @@
+//
+//  HJDownAlertView.h
+//  HJMethod
+//
+//  Created by coco on 16/6/8.
+//  Copyright © 2016年 XHJ. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface HJDownAlertView : UIView
+
+- (void)show;
+
+- (void)dismiss;
+
+/**
+ *  初始化方法
+ *
+ *  @param title       标题
+ *  @param contentText 中间内容
+ *  @param buttonTitle 按钮的标题
+ *  @param buttonClick 按钮点击方法
+ *
+ *  @return
+ */
++ (HJDownAlertView *)alertViewWithTitle:(NSString *)title
+                            contentText:(NSString *)contentText
+                            buttonTitle:(NSString *)buttonTitle
+                            buttonBlock:(void (^)())buttonClick;
+
+/**
+ *  初始化方法
+ *
+ *  @param title       标题
+ *  @param contentText 中间内容
+ *  @param buttonTitle 按钮的标题
+ *  @param buttonClick 按钮点击方法
+ *
+ *  @return
+ */
+- (instancetype)initWithTitle:(NSString *)title
+                  contentText:(NSString *)contentText
+                  buttonTitle:(NSString *)buttonTitle
+                  buttonBlock:(void (^)())buttonClick;;
+
+@end

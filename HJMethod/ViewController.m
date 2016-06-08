@@ -9,16 +9,30 @@
 #import "ViewController.h"
 #import "HJTool.h"
 #import <Availability.h>
-
+#import "HJDownAlertView.h"
 
 @interface ViewController ()
 
 @end
 
 @implementation ViewController
+- (void)button:(UIButton *)button {
+    HJDownAlertView *alertView = [HJDownAlertView alertViewWithTitle:@"提示" contentText:@"测试实施d大家都快放假的时刻肯定舒服点开始放基督教" buttonTitle:@"取消" buttonBlock:^{
+        self.view.backgroundColor = [UIColor hj_randomColor];
+    }];
+    [alertView show];
 
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UIButton *button = [UIButton buttonWithType:(UIButtonTypeCustom)];
+    button.bounds = CGRectMake(0, 0, 100, 30);
+    [button setTitle:@"点我吧" forState:(UIControlStateNormal)];
+    button.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5];
+    [button addTarget:self action:@selector(button:) forControlEvents:(UIControlEventTouchUpInside)];
+    button.center = self.view.center;
+    [self.view addSubview:button];
+    
 //    self.view.backgroundColor = kColorFromRGBValue(292213);
 //    self.view.backgroundColor = [UIColor colorFromHexString:@"0xabcdef"];
 //    kColorFromRGBA(<#R#>, <#G#>, <#B#>, <#A#>)
@@ -46,17 +60,18 @@
    NSDictionary *dic =  hj_JSONTransformToDictionaryOrArray(@"{\"a\":[1,2,3],\"b\":\"我们\"}");
     XHJLog(@"字典%@", dic);
 
+    //touchID
+//    [TouchID showTouchIdOnCompletion:^(BOOL success, NSError *authenticationError) {
+//        
+//    } failed:^(NSError *authenticationError) {
+//        
+//    }];
     
-    [TouchID showTouchIdOnCompletion:^(BOOL success, NSError *authenticationError) {
-        
-    } failed:^(NSError *authenticationError) {
-        
-    }];
-    
-    XHJLog(@"%@", [@"123456" hj_safedStringWithType:(EncryptTypeMD5)]);
+        XHJLog(@"%@", [@"123456" hj_safedStringWithType:(EncryptTypeMD5)]);
 //    [self.view hj_snapshotsWithType:(HJViewSnapshotsTypeSandbox)];
     // Do any additional setup after loading the view, typically from a nib.
 }
+
 - (void)animationDidStart:(CAAnimation *)anim {}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

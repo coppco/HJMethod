@@ -8,6 +8,9 @@
 
 #import "HJGuideController.h"
 #import "Masonry.h"
+#import "ViewController.h"
+#import "UIView+HJExtension.h"
+
 #define kGuideImageNum 4 //引导图数量
 #define kCollectionViewCellIdentify @"collectionViewCell"
 @interface HJGuideController () <UICollectionViewDataSource, UICollectionViewDelegate>
@@ -32,8 +35,7 @@
 - (UIButton *)beginB {
     if (!_beginB) {
         _beginB = ({
-            UIButton *button = [[UIButton alloc] init];
-            button = [UIButton buttonWithType:(UIButtonTypeCustom)];
+            UIButton *button = [UIButton buttonWithType:(UIButtonTypeCustom)];
             button.frame = CGRectMake(10, self.view.frame.size.height - 120, (self.view.frame.size.width - 20), 40);
             [button setTitle:@"开启App之旅" forState:(UIControlStateNormal)];
             button.layer.cornerRadius = 20;
@@ -86,10 +88,13 @@
 }
 
 - (void)skip:(UIButton *)button {
-    //进入App
-    
+    //动画
+    [self.view animationGradualType:(AnimateTypeBig) isRotateFew:NO delegate:self];
 }
-
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
+    //进入App
+    [UIApplication sharedApplication].keyWindow.rootViewController = [[ViewController alloc] init];
+}
 - (void)configSubview {
     //集合视图
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
@@ -153,17 +158,20 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCollectionViewCellIdentify forIndexPath:indexPath];
     
-    if (cell.backgroundView) {
-        UIImageView *imageV = (UIImageView *)cell.backgroundView;
+    if ([cell viewWithTag:9999]) {
+        UIImageView *imageV = [cell viewWithTag:9999];
+       
         imageV.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:self.images[indexPath.item] ofType:nil]];
     } else {
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:collectionView.bounds];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:cell.contentView.bounds];
+        imageView.tag = 9999;
+         imageView.userInteractionEnabled = YES;
         imageView.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:self.images[indexPath.item] ofType:nil]];
-        cell.backgroundView = imageView;
+        [cell.contentView addSubview:imageView];
     }
     
     if (indexPath.item == kGuideImageNum - 1) {
-        [cell.backgroundView addSubview:self.beginB];
+        [cell.contentView addSubview:self.beginB];
         self.beginB.hidden = NO;
     } else if (indexPath.row % 2 == (kGuideImageNum % 2) ? 0 : 1){
         self.beginB.hidden = YES;
