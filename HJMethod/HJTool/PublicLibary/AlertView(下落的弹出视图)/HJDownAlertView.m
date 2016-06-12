@@ -8,14 +8,23 @@
 
 #import "HJDownAlertView.h"
 #import "Masonry.h"
-#import "UIView+HJExtension.h"
+#import <objc/runtime.h>
+
+//文字
 #define kAlertViewTitleHeight 25
 #define kAlertViewTitleOffsetY 15
 #define kAlertViewTitleOffsetX 30
+//垂直间隔
 #define kAlertViewV 5
+//正文x
 #define kAlertViewContentOffsetX 10
+//按钮宽高
 #define kAlertViewOperationButtonWidth 100
 #define kAlertViewOperationButtonHeight 30
+
+//整体宽度和x位置
+#define kAlertViewOffsetX 10
+#define kAlertViewWidth ([UIScreen mainScreen].bounds.size.width - 20)
 
 
 @interface HJDownAlertView ()
@@ -38,11 +47,18 @@
 
 /**挡板*/
 @property (nonatomic, strong)UIView *backView;
+
+/**缓存高度*/
+@property (nonatomic, assign)CGFloat autoHeight;
 @end
 
 @implementation HJDownAlertView
 
-+ (HJDownAlertView *)alertViewWithTitle:(NSString *)title
+- (CGFloat)autoHeight {
+    return [self autoLayoutSizeWithWidth:kAlertViewWidth].height;
+}
+
++ (HJDownAlertView *)downAlertViewWithTitle:(NSString *)title
                             contentText:(NSString *)contentText
                             buttonTitle:(NSString *)buttonTitle
                             buttonBlock:(void (^)())buttonClick {
@@ -92,13 +108,16 @@
     self.operationB.layer.cornerRadius = 5;
     [self.operationB setTitle:self.buttonTitle forState:(UIControlStateNormal)];
     [self.operationB setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
-    [self.operationB setBackgroundColor:[UIColor colorWithRed:227.0/255.0 green:100.0/255.0 blue:83.0/255.0 alpha:1]];
+    [self.operationB setBackgroundColor:[UIColor colorWithRed:227.0/255.0
+                                                        green:100.0/255.0
+                                                         blue:83.0/255.0
+                                                        alpha:1]];
     self.operationB.titleLabel.font = [UIFont systemFontOfSize:14];
     [self.operationB addTarget:self action:@selector(buttonHasClick:) forControlEvents:(UIControlEventTouchUpInside)];
     [self addSubview:self.operationB];
     
     [self.closeB mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(30, 30));
+        make.size.mas_equalTo(CGSizeMake(25, 25));
         make.top.mas_equalTo(self.mas_top).offset(10);
         make.right.mas_equalTo(-10);
     }];
@@ -126,7 +145,6 @@
 
 //按钮点击事件
 - (void)buttonHasClick:(UIButton *)button {
-    NSLog(@"按钮");
     if (button == self.closeB) {
         [self dismiss];
     } else {
@@ -136,7 +154,7 @@
         }
     }
 }
-
+//显示
 - (void)show {
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
     
@@ -146,73 +164,78 @@
     self.backView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.6];
     [window addSubview:self.backView];
     [window addSubview:self];
-    
-    [self mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(0);
+
+
+    [self mas_remakeConstraints :^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(window.mas_top);
         make.left.mas_equalTo(window).offset(10);
         make.right.mas_equalTo(window).offset(-10);
-        //这里使用自动计算高度
+        make.height.mas_greaterThanOrEqualTo(self.autoHeight);
     }];
-
     
+    [self layoutIfNeeded];
     
-    [self setNeedsUpdateConstraints];
-    [self updateConstraintsIfNeeded];
-    self.transform = CGAffineTransformRotate(self.transform, -M_1_PI);
-    [UIView animateWithDuration:0.4 animations:^{
+    [self mas_remakeConstraints :^(MASConstraintMaker *make) {
+        make.centerY.mas_equalTo(window);
+        make.left.mas_equalTo(window).offset(10);
+        make.right.mas_equalTo(window).offset(-10);
+        make.height.mas_greaterThanOrEqualTo(self.autoHeight);
+    }];
+    
+    self.transform = CGAffineTransformRotate(self.transform, -M_1_PI / 2);
+    [UIView animateWithDuration:0.5 animations:^{
+        [self layoutIfNeeded];
+        self.transform = CGAffineTransformIdentity;
+    } completion:^(BOOL finished) {
+    }];
+}
+- (void)didMoveToWindow {
+    [super didMoveToWindow];
+    
+}
+//隐藏
+- (void)dismiss {
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    [self mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(window.mas_bottom).offset(100);
+        make.left.mas_equalTo(window).offset(10);
+        make.right.mas_equalTo(window).offset(-10);
+        make.height.mas_greaterThanOrEqualTo(self.autoHeight);
+    }];
+    [UIView animateWithDuration:0.5 animations:^{
+        self.transform = CGAffineTransformRotate(self.transform, M_1_PI / 1.5);
         [self layoutIfNeeded];
     } completion:^(BOOL finished) {
+        [self.backView removeFromSuperview];
+        self.backView = nil;
         self.transform = CGAffineTransformIdentity;
+        [self removeFromSuperview];
     }];
-}
-- (void)updateConstraints {
-    UIWindow *window = [UIApplication sharedApplication].keyWindow;
-    [self mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(0);
-        make.left.mas_equalTo(window).offset(10);
-        make.right.mas_equalTo(window).offset(-10);
-        make.height.mas_greaterThanOrEqualTo([self autoLayoutSizeWithWidth:window.frame.size.width - 20].height);
-    }];
-    [super updateConstraints];
-}
-
-- (void)dismiss {
-    [self removeFromSuperview];
-}
-
-- (void)removeFromSuperview {
-    [self.backView removeFromSuperview];
-    self.backView = nil;
     
-    UIWindow *window = [UIApplication sharedApplication].keyWindow;
-    [UIView animateWithDuration:0.35 animations:^{
-        self.transform = CGAffineTransformMakeRotation(M_1_PI / 1.5);
-        self.frame = CGRectMake(10, window.frame.size.height, window.frame.size.width - 20, 100);
-    } completion:^(BOOL finished) {
-        [super removeFromSuperview];
-    }];
 }
 
-/*
-- (void)willMoveToSuperview:(UIView *)newSuperview {
-        [super willMoveToSuperview:newSuperview];
-    if (newSuperview == nil) {
-        return;
+//是否自动布局  YES 代码布局  需要实现sizeThatFits:
+- (BOOL)hj_enforceFrameLayout {
+    return [objc_getAssociatedObject(self, _cmd) boolValue];
+}
+
+- (CGSize)autoLayoutSizeWithWidth:(CGFloat)width {
+    CGSize size;
+    if ([self hj_enforceFrameLayout]) {
+        SEL selector = @selector(sizeThatFits:);
+        BOOL inherited = ![self isMemberOfClass:UIView.class];
+        BOOL overrided = [self.class instanceMethodForSelector:selector] != [UIView instanceMethodForSelector:selector];
+        if (inherited && !overrided) {
+            NSAssert(NO, @"view must override '-sizeThatFits:' method if not using auto layout.");
+        }
+        size = [self sizeThatFits:CGSizeMake(width, 0)];
+    } else {
+        NSLayoutConstraint *tempWidthConstraint = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:width];
+        [self addConstraint:tempWidthConstraint];
+        // Auto layout engine does its math
+        size = [self systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+        [self removeConstraint:tempWidthConstraint];
     }
-    
-    //旋转一点
-    self.transform = CGAffineTransformRotate(self.transform, -M_1_PI);
-    [UIView animateWithDuration:0.35 animations:^{
-        [self mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.center.mas_equalTo(window);
-            make.width.mas_equalTo(window.frame.size.width - 20);
-            make.height.mas_equalTo([self autoLayoutSizeWithWidth:(window.frame.size.width - 20)]);
-        }];
-        self.transform = CGAffineTransformIdentity;
-    } completion:^(BOOL finished) {
-        
-    }];
-
+    return size;
 }
-*/
 @end

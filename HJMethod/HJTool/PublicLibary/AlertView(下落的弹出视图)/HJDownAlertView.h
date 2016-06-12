@@ -4,7 +4,7 @@
 //
 //  Created by coco on 16/6/8.
 //  Copyright © 2016年 XHJ. All rights reserved.
-//
+//  添加到window上面, 不要在viewdidload里面直接使用
 
 #import <UIKit/UIKit.h>
 
@@ -15,7 +15,7 @@
 - (void)dismiss;
 
 /**
- *  初始化方法
+ *  类方法
  *
  *  @param title       标题
  *  @param contentText 中间内容
@@ -24,7 +24,7 @@
  *
  *  @return
  */
-+ (HJDownAlertView *)alertViewWithTitle:(NSString *)title
++ (HJDownAlertView *)downAlertViewWithTitle:(NSString *)title
                             contentText:(NSString *)contentText
                             buttonTitle:(NSString *)buttonTitle
                             buttonBlock:(void (^)())buttonClick;

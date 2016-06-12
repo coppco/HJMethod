@@ -12,15 +12,18 @@
 #import "HJDownAlertView.h"
 
 @interface ViewController ()
-
+/**hj*/
+@property (nonatomic, strong)HJDownAlertView *downAlertView;
 @end
 
 @implementation ViewController
 - (void)button:(UIButton *)button {
-    HJDownAlertView *alertView = [HJDownAlertView alertViewWithTitle:@"提示" contentText:@"测试实施d大家都快放假的时刻肯定舒服点开始放基督教" buttonTitle:@"取消" buttonBlock:^{
-        self.view.backgroundColor = [UIColor hj_randomColor];
-    }];
-    [alertView show];
+    if (!self.downAlertView) {
+        self.downAlertView = [HJDownAlertView downAlertViewWithTitle:@"提示" contentText:@"自\n定\n义\n弹\n出\n,\n高\n度\n自\n适\n应\n!" buttonTitle:@"取消" buttonBlock:^{
+            self.view.backgroundColor = [UIColor hj_randomColor];
+        }];
+    }
+    [self.downAlertView show];
 
 }
 - (void)viewDidLoad {
@@ -51,7 +54,7 @@
     XHJLog(@"%ld-%ld-%ld", date.year, date.month, date.day);
     [sti hj_isValidIndentifyNumber];
     
-    XHJLog(@"%.0f", [@"dsfjdslj大幅度是浪费了第三方了电视剧反垄断法律是放假了圣诞节发的是减肥了多少级分类的解放路上几分的减肥减肥fsdljfsldjflsjfdfjklsdfjslfldsjfldsjfdls" hj_heightForWidth:100 font:[UIFont systemFontOfSize:17]]);
+    XHJLog(@"%.0f", [@"dsfjdslj大幅度是浪费了第三方了电视剧反垄断法律是放假了圣诞节发的是减肥了sdfdsdsfsdljfldsjlfksdjlsdjfdlsjlsdjflsdjlsdjflsdjlsdjflsa多少级分类的解放路上几分的减肥减肥fsdljfsldjflsjfdfjklsdfjslfldsjfldsjfdls" hj_heightForWidth:100 font:[UIFont systemFontOfSize:17]]);
     
 //    hj_callTelephoneNumber(@"15105713500", NO);
 

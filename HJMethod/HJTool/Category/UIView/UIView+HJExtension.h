@@ -138,6 +138,7 @@ typedef NS_ENUM(NSInteger, DirectionType) {
  *  @return YES----->代码布局  NO---->autoLayout
  */
 - (BOOL)hj_enforceFrameLayout;
+
 //加载时的动画
 
 /**

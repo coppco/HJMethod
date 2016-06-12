@@ -43,7 +43,7 @@
             button.backgroundColor = [UIColor redColor];
             button.layer.borderColor = [[UIColor whiteColor] colorWithAlphaComponent:0.2].CGColor;
             button.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.5];
-            [button setTitleColor:[[UIColor whiteColor] colorWithAlphaComponent:0.5] forState:UIControlStateNormal];
+            [button setTitleColor:[[UIColor whiteColor] colorWithAlphaComponent:1] forState:UIControlStateNormal];
             [button setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
             [[button titleLabel] setFont:[UIFont systemFontOfSize:16]];
             [button addTarget:self action:@selector(skip:) forControlEvents:(UIControlEventTouchUpInside)];
