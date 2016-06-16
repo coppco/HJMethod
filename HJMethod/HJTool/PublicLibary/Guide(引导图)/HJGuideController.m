@@ -7,12 +7,13 @@
 //
 
 #import "HJGuideController.h"
-#import "Masonry.h"
 #import "ViewController.h"
 #import "UIView+HJExtension.h"
 
 #define kGuideImageNum 4 //引导图数量
 #define kCollectionViewCellIdentify @"collectionViewCell"
+#define kCollectionViewButtonTitle @"开启App之旅"
+
 @interface HJGuideController () <UICollectionViewDataSource, UICollectionViewDelegate>
 /**集合视图*/
 @property (nonatomic, strong)UICollectionView *collectionView;
@@ -37,7 +38,7 @@
         _beginB = ({
             UIButton *button = [UIButton buttonWithType:(UIButtonTypeCustom)];
             button.frame = CGRectMake(10, self.view.frame.size.height - 120, (self.view.frame.size.width - 20), 40);
-            [button setTitle:@"开启App之旅" forState:(UIControlStateNormal)];
+            [button setTitle:kCollectionViewButtonTitle forState:(UIControlStateNormal)];
             button.layer.cornerRadius = 20;
             button.layer.borderWidth = 1;
             button.backgroundColor = [UIColor redColor];

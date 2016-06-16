@@ -19,10 +19,10 @@
     // Override point for customization after application launch.
     
     
-    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    self.window.backgroundColor = [UIColor whiteColor];
-    self.window.rootViewController = [[HJGuideController alloc] init];
-    [self.window makeKeyAndVisible];
+//    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+//    self.window.backgroundColor = [UIColor whiteColor];
+//    self.window.rootViewController = [[HJGuideController alloc] init];
+//    [self.window makeKeyAndVisible];
     return YES;
 }
 

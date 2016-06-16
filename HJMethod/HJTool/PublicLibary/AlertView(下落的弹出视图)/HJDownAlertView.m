@@ -7,7 +7,6 @@
 //
 
 #import "HJDownAlertView.h"
-#import "Masonry.h"
 #import <objc/runtime.h>
 
 //文字
@@ -36,14 +35,7 @@
 @property (nonatomic, strong)UILabel *contentTextL;
 /**关闭按钮*/
 @property (nonatomic, strong)UIButton *closeB;
-/**标题*/
-@property (nonatomic, copy)NSString *title;
-/**按钮标题*/
-@property (nonatomic, copy)NSString *buttonTitle;
-/**提示语*/
-@property (nonatomic, copy)NSString *contentText;
-/**按钮点击block*/
-@property (nonatomic, copy)void (^buttonClick)();
+
 
 /**挡板*/
 @property (nonatomic, strong)UIView *backView;
@@ -117,7 +109,7 @@
     [self addSubview:self.operationB];
     
     [self.closeB mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(25, 25));
+        make.size.mas_equalTo(CGSizeMake(20, 20));
         make.top.mas_equalTo(self.mas_top).offset(10);
         make.right.mas_equalTo(-10);
     }];
@@ -145,14 +137,13 @@
 
 //按钮点击事件
 - (void)buttonHasClick:(UIButton *)button {
-    if (button == self.closeB) {
-        [self dismiss];
-    } else {
+    if (self.operationB == button) {
         if (self.buttonClick) {
-            [self dismiss];
             self.buttonClick();
         }
     }
+    //
+    [self dismiss];
 }
 //显示
 - (void)show {
@@ -183,15 +174,11 @@
     }];
     
     self.transform = CGAffineTransformRotate(self.transform, -M_1_PI / 2);
-    [UIView animateWithDuration:0.5 animations:^{
+    [UIView animateWithDuration:0.35 animations:^{
         [self layoutIfNeeded];
         self.transform = CGAffineTransformIdentity;
     } completion:^(BOOL finished) {
     }];
-}
-- (void)didMoveToWindow {
-    [super didMoveToWindow];
-    
 }
 //隐藏
 - (void)dismiss {
@@ -202,7 +189,7 @@
         make.right.mas_equalTo(window).offset(-10);
         make.height.mas_greaterThanOrEqualTo(self.autoHeight);
     }];
-    [UIView animateWithDuration:0.5 animations:^{
+    [UIView animateWithDuration:0.35 animations:^{
         self.transform = CGAffineTransformRotate(self.transform, M_1_PI / 1.5);
         [self layoutIfNeeded];
     } completion:^(BOOL finished) {
@@ -238,4 +225,19 @@
     }
     return size;
 }
+
+#pragma - mark setter方法和getter 方法
+- (void)setTitle:(NSString *)title {
+    _title = title;
+    self.titleL.text = title;
+}
+- (void)setButtonTitle:(NSString *)buttonTitle {
+    _buttonTitle = buttonTitle;
+    [self.operationB setTitle:buttonTitle forState:(UIControlStateNormal)];
+}
+- (void)setContentText:(NSString *)contentText {
+    _contentText = contentText;
+    _contentTextL.text = contentText;
+}
+
 @end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		264E3AB93504AE3C5FC2B82A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9341DB962B0730E08D3D0413 /* libPods.a */; };
 		CC400E8D1CFFD9B300A1B490 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CC400E8C1CFFD9B300A1B490 /* main.m */; };
 		CC400E901CFFD9B300A1B490 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CC400E8F1CFFD9B300A1B490 /* AppDelegate.m */; };
 		CC400E931CFFD9B300A1B490 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC400E921CFFD9B300A1B490 /* ViewController.m */; };
@@ -17,16 +18,13 @@
 		CC400EB11CFFD9B300A1B490 /* HJMethodUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CC400EB01CFFD9B300A1B490 /* HJMethodUITests.m */; };
 		CC400EC61CFFDBF300A1B490 /* UIView+HJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = CC400EC51CFFDBF300A1B490 /* UIView+HJExtension.m */; };
 		CC400ECB1CFFF48000A1B490 /* UIColor+HJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = CC400ECA1CFFF48000A1B490 /* UIColor+HJExtension.m */; };
-		CC584FBA1D07B8E600F77FD8 /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = CC584FA11D07B8E600F77FD8 /* MASCompositeConstraint.m */; };
-		CC584FBB1D07B8E600F77FD8 /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = CC584FA41D07B8E600F77FD8 /* MASConstraint.m */; };
-		CC584FBC1D07B8E600F77FD8 /* MASConstraintMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = CC584FA61D07B8E600F77FD8 /* MASConstraintMaker.m */; };
-		CC584FBD1D07B8E600F77FD8 /* MASLayoutConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = CC584FA81D07B8E600F77FD8 /* MASLayoutConstraint.m */; };
-		CC584FBE1D07B8E600F77FD8 /* MASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = CC584FAC1D07B8E600F77FD8 /* MASViewAttribute.m */; };
-		CC584FBF1D07B8E600F77FD8 /* MASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = CC584FAE1D07B8E600F77FD8 /* MASViewConstraint.m */; };
-		CC584FC01D07B8E600F77FD8 /* NSArray+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = CC584FB01D07B8E600F77FD8 /* NSArray+MASAdditions.m */; };
-		CC584FC11D07B8E600F77FD8 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = CC584FB31D07B8E600F77FD8 /* NSLayoutConstraint+MASDebugAdditions.m */; };
-		CC584FC21D07B8E600F77FD8 /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = CC584FB51D07B8E600F77FD8 /* View+MASAdditions.m */; };
-		CC584FC31D07B8E600F77FD8 /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = CC584FB81D07B8E600F77FD8 /* ViewController+MASAdditions.m */; };
+		CC57046F1D0E928800A7D5C1 /* HJShoppingBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CC57046E1D0E928800A7D5C1 /* HJShoppingBottomBar.m */; };
+		CC5705A11D0EC16800A7D5C1 /* HJShoppingService.m in Sources */ = {isa = PBXBuildFile; fileRef = CC5705A01D0EC16800A7D5C1 /* HJShoppingService.m */; };
+		CC5705A51D0EC2DD00A7D5C1 /* HJShoppingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC5705A31D0EC2DD00A7D5C1 /* HJShoppingCell.m */; };
+		CC5705A61D0EC2DD00A7D5C1 /* HJShoppingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC5705A41D0EC2DD00A7D5C1 /* HJShoppingCell.xib */; };
+		CC5705A91D0F909400A7D5C1 /* HJShoppingCount.m in Sources */ = {isa = PBXBuildFile; fileRef = CC5705A81D0F909400A7D5C1 /* HJShoppingCount.m */; };
+		CC57E6EB1D0D4A0100858E4A /* HJCircleColorView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC57E6EA1D0D4A0100858E4A /* HJCircleColorView.m */; };
+		CC57E6F31D0D592D00858E4A /* HJShoppingCartController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC57E6F21D0D592D00858E4A /* HJShoppingCartController.m */; };
 		CC584FEB1D08030700F77FD8 /* new_feature_1.png in Resources */ = {isa = PBXBuildFile; fileRef = CC584FE51D08030700F77FD8 /* new_feature_1.png */; };
 		CC584FEC1D08030700F77FD8 /* new_feature_2.png in Resources */ = {isa = PBXBuildFile; fileRef = CC584FE61D08030700F77FD8 /* new_feature_2.png */; };
 		CC584FED1D08030700F77FD8 /* new_feature_3.png in Resources */ = {isa = PBXBuildFile; fileRef = CC584FE71D08030700F77FD8 /* new_feature_3.png */; };
@@ -63,6 +61,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3C08642996B6FAE5ECB05795 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		9341DB962B0730E08D3D0413 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C08A2FB2F3647FB1436AE11B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		CC400E881CFFD9B300A1B490 /* HJMethod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HJMethod.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC400E8C1CFFD9B300A1B490 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CC400E8E1CFFD9B300A1B490 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -85,31 +86,20 @@
 		CC400EC71CFFDDB400A1B490 /* HJCommonDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HJCommonDefine.h; sourceTree = "<group>"; };
 		CC400EC91CFFF48000A1B490 /* UIColor+HJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HJExtension.h"; sourceTree = "<group>"; };
 		CC400ECA1CFFF48000A1B490 /* UIColor+HJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HJExtension.m"; sourceTree = "<group>"; };
-		CC584FA01D07B8E600F77FD8 /* MASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
-		CC584FA11D07B8E600F77FD8 /* MASCompositeConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASCompositeConstraint.m; sourceTree = "<group>"; };
-		CC584FA21D07B8E600F77FD8 /* MASConstraint+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MASConstraint+Private.h"; sourceTree = "<group>"; };
-		CC584FA31D07B8E600F77FD8 /* MASConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASConstraint.h; sourceTree = "<group>"; };
-		CC584FA41D07B8E600F77FD8 /* MASConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASConstraint.m; sourceTree = "<group>"; };
-		CC584FA51D07B8E600F77FD8 /* MASConstraintMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASConstraintMaker.h; sourceTree = "<group>"; };
-		CC584FA61D07B8E600F77FD8 /* MASConstraintMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASConstraintMaker.m; sourceTree = "<group>"; };
-		CC584FA71D07B8E600F77FD8 /* MASLayoutConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASLayoutConstraint.h; sourceTree = "<group>"; };
-		CC584FA81D07B8E600F77FD8 /* MASLayoutConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASLayoutConstraint.m; sourceTree = "<group>"; };
-		CC584FA91D07B8E600F77FD8 /* Masonry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Masonry.h; sourceTree = "<group>"; };
-		CC584FAA1D07B8E600F77FD8 /* MASUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASUtilities.h; sourceTree = "<group>"; };
-		CC584FAB1D07B8E600F77FD8 /* MASViewAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASViewAttribute.h; sourceTree = "<group>"; };
-		CC584FAC1D07B8E600F77FD8 /* MASViewAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewAttribute.m; sourceTree = "<group>"; };
-		CC584FAD1D07B8E600F77FD8 /* MASViewConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASViewConstraint.h; sourceTree = "<group>"; };
-		CC584FAE1D07B8E600F77FD8 /* MASViewConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewConstraint.m; sourceTree = "<group>"; };
-		CC584FAF1D07B8E600F77FD8 /* NSArray+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MASAdditions.h"; sourceTree = "<group>"; };
-		CC584FB01D07B8E600F77FD8 /* NSArray+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+MASAdditions.m"; sourceTree = "<group>"; };
-		CC584FB11D07B8E600F77FD8 /* NSArray+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MASShorthandAdditions.h"; sourceTree = "<group>"; };
-		CC584FB21D07B8E600F77FD8 /* NSLayoutConstraint+MASDebugAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLayoutConstraint+MASDebugAdditions.h"; sourceTree = "<group>"; };
-		CC584FB31D07B8E600F77FD8 /* NSLayoutConstraint+MASDebugAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLayoutConstraint+MASDebugAdditions.m"; sourceTree = "<group>"; };
-		CC584FB41D07B8E600F77FD8 /* View+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASAdditions.h"; sourceTree = "<group>"; };
-		CC584FB51D07B8E600F77FD8 /* View+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "View+MASAdditions.m"; sourceTree = "<group>"; };
-		CC584FB61D07B8E600F77FD8 /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
-		CC584FB71D07B8E600F77FD8 /* ViewController+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+MASAdditions.h"; sourceTree = "<group>"; };
-		CC584FB81D07B8E600F77FD8 /* ViewController+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ViewController+MASAdditions.m"; sourceTree = "<group>"; };
+		CC57046D1D0E928800A7D5C1 /* HJShoppingBottomBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJShoppingBottomBar.h; sourceTree = "<group>"; };
+		CC57046E1D0E928800A7D5C1 /* HJShoppingBottomBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJShoppingBottomBar.m; sourceTree = "<group>"; };
+		CC5704701D0E982A00A7D5C1 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		CC57059F1D0EC16800A7D5C1 /* HJShoppingService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJShoppingService.h; sourceTree = "<group>"; };
+		CC5705A01D0EC16800A7D5C1 /* HJShoppingService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJShoppingService.m; sourceTree = "<group>"; };
+		CC5705A21D0EC2DD00A7D5C1 /* HJShoppingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJShoppingCell.h; sourceTree = "<group>"; };
+		CC5705A31D0EC2DD00A7D5C1 /* HJShoppingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJShoppingCell.m; sourceTree = "<group>"; };
+		CC5705A41D0EC2DD00A7D5C1 /* HJShoppingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HJShoppingCell.xib; sourceTree = "<group>"; };
+		CC5705A71D0F909400A7D5C1 /* HJShoppingCount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJShoppingCount.h; sourceTree = "<group>"; };
+		CC5705A81D0F909400A7D5C1 /* HJShoppingCount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJShoppingCount.m; sourceTree = "<group>"; };
+		CC57E6E91D0D4A0100858E4A /* HJCircleColorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJCircleColorView.h; sourceTree = "<group>"; };
+		CC57E6EA1D0D4A0100858E4A /* HJCircleColorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJCircleColorView.m; sourceTree = "<group>"; };
+		CC57E6F11D0D592D00858E4A /* HJShoppingCartController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJShoppingCartController.h; sourceTree = "<group>"; };
+		CC57E6F21D0D592D00858E4A /* HJShoppingCartController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJShoppingCartController.m; sourceTree = "<group>"; };
 		CC584FE51D08030700F77FD8 /* new_feature_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_feature_1.png; sourceTree = "<group>"; };
 		CC584FE61D08030700F77FD8 /* new_feature_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_feature_2.png; sourceTree = "<group>"; };
 		CC584FE71D08030700F77FD8 /* new_feature_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_feature_3.png; sourceTree = "<group>"; };
@@ -144,6 +134,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC655F5D1D068775009856A5 /* libz.tbd in Frameworks */,
+				264E3AB93504AE3C5FC2B82A /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,6 +155,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7A591DC3E5C3461670CB6DE3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3C08642996B6FAE5ECB05795 /* Pods.debug.xcconfig */,
+				C08A2FB2F3647FB1436AE11B /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		7F8CFA3035AFD107C73F125A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9341DB962B0730E08D3D0413 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CC400E7F1CFFD9B300A1B490 = {
 			isa = PBXGroup;
 			children = (
@@ -172,6 +180,8 @@
 				CC400EA41CFFD9B300A1B490 /* HJMethodTests */,
 				CC400EAF1CFFD9B300A1B490 /* HJMethodUITests */,
 				CC400E891CFFD9B300A1B490 /* Products */,
+				7A591DC3E5C3461670CB6DE3 /* Pods */,
+				7F8CFA3035AFD107C73F125A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -206,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				CC400E8C1CFFD9B300A1B490 /* main.m */,
+				CC5704701D0E982A00A7D5C1 /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -282,49 +293,85 @@
 			path = UIColor;
 			sourceTree = "<group>";
 		};
+		CC57059E1D0EC0F600A7D5C1 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CC57059F1D0EC16800A7D5C1 /* HJShoppingService.h */,
+				CC5705A01D0EC16800A7D5C1 /* HJShoppingService.m */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CC57E6E81D0D4A0100858E4A /* CircleView(圆形旋转彩色提示框) */ = {
+			isa = PBXGroup;
+			children = (
+				CC57E6E91D0D4A0100858E4A /* HJCircleColorView.h */,
+				CC57E6EA1D0D4A0100858E4A /* HJCircleColorView.m */,
+			);
+			path = "CircleView(圆形旋转彩色提示框)";
+			sourceTree = "<group>";
+		};
+		CC57E6EC1D0D4A9D00858E4A /* CircleProgressView(环形进度条) */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "CircleProgressView(环形进度条)";
+			sourceTree = "<group>";
+		};
+		CC57E6ED1D0D591000858E4A /* HJShoppingCart(购物车) */ = {
+			isa = PBXGroup;
+			children = (
+				CC57E6EE1D0D591000858E4A /* Controller */,
+				CC57E6EF1D0D591000858E4A /* Model */,
+				CC57E6F01D0D591000858E4A /* View */,
+				CC57059E1D0EC0F600A7D5C1 /* ViewModel */,
+			);
+			path = "HJShoppingCart(购物车)";
+			sourceTree = "<group>";
+		};
+		CC57E6EE1D0D591000858E4A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CC57E6F11D0D592D00858E4A /* HJShoppingCartController.h */,
+				CC57E6F21D0D592D00858E4A /* HJShoppingCartController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CC57E6EF1D0D591000858E4A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CC57E6F01D0D591000858E4A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CC57046D1D0E928800A7D5C1 /* HJShoppingBottomBar.h */,
+				CC57046E1D0E928800A7D5C1 /* HJShoppingBottomBar.m */,
+				CC5705A21D0EC2DD00A7D5C1 /* HJShoppingCell.h */,
+				CC5705A31D0EC2DD00A7D5C1 /* HJShoppingCell.m */,
+				CC5705A41D0EC2DD00A7D5C1 /* HJShoppingCell.xib */,
+				CC5705A71D0F909400A7D5C1 /* HJShoppingCount.h */,
+				CC5705A81D0F909400A7D5C1 /* HJShoppingCount.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		CC584F9D1D07B8E600F77FD8 /* Third */ = {
 			isa = PBXGroup;
 			children = (
-				CC584F9E1D07B8E600F77FD8 /* Masonry */,
 			);
 			path = Third;
-			sourceTree = "<group>";
-		};
-		CC584F9E1D07B8E600F77FD8 /* Masonry */ = {
-			isa = PBXGroup;
-			children = (
-				CC584FA01D07B8E600F77FD8 /* MASCompositeConstraint.h */,
-				CC584FA11D07B8E600F77FD8 /* MASCompositeConstraint.m */,
-				CC584FA21D07B8E600F77FD8 /* MASConstraint+Private.h */,
-				CC584FA31D07B8E600F77FD8 /* MASConstraint.h */,
-				CC584FA41D07B8E600F77FD8 /* MASConstraint.m */,
-				CC584FA51D07B8E600F77FD8 /* MASConstraintMaker.h */,
-				CC584FA61D07B8E600F77FD8 /* MASConstraintMaker.m */,
-				CC584FA71D07B8E600F77FD8 /* MASLayoutConstraint.h */,
-				CC584FA81D07B8E600F77FD8 /* MASLayoutConstraint.m */,
-				CC584FA91D07B8E600F77FD8 /* Masonry.h */,
-				CC584FAA1D07B8E600F77FD8 /* MASUtilities.h */,
-				CC584FAB1D07B8E600F77FD8 /* MASViewAttribute.h */,
-				CC584FAC1D07B8E600F77FD8 /* MASViewAttribute.m */,
-				CC584FAD1D07B8E600F77FD8 /* MASViewConstraint.h */,
-				CC584FAE1D07B8E600F77FD8 /* MASViewConstraint.m */,
-				CC584FAF1D07B8E600F77FD8 /* NSArray+MASAdditions.h */,
-				CC584FB01D07B8E600F77FD8 /* NSArray+MASAdditions.m */,
-				CC584FB11D07B8E600F77FD8 /* NSArray+MASShorthandAdditions.h */,
-				CC584FB21D07B8E600F77FD8 /* NSLayoutConstraint+MASDebugAdditions.h */,
-				CC584FB31D07B8E600F77FD8 /* NSLayoutConstraint+MASDebugAdditions.m */,
-				CC584FB41D07B8E600F77FD8 /* View+MASAdditions.h */,
-				CC584FB51D07B8E600F77FD8 /* View+MASAdditions.m */,
-				CC584FB61D07B8E600F77FD8 /* View+MASShorthandAdditions.h */,
-				CC584FB71D07B8E600F77FD8 /* ViewController+MASAdditions.h */,
-				CC584FB81D07B8E600F77FD8 /* ViewController+MASAdditions.m */,
-			);
-			path = Masonry;
 			sourceTree = "<group>";
 		};
 		CC584FCD1D07EB0500F77FD8 /* PublicLibary */ = {
 			isa = PBXGroup;
 			children = (
+				CC57E6ED1D0D591000858E4A /* HJShoppingCart(购物车) */,
+				CC57E6EC1D0D4A9D00858E4A /* CircleProgressView(环形进度条) */,
+				CC57E6E81D0D4A0100858E4A /* CircleView(圆形旋转彩色提示框) */,
 				CC584FF01D08032B00F77FD8 /* AlertView(下落的弹出视图) */,
 				CC584FE31D08030700F77FD8 /* Guide(引导图) */,
 			);
@@ -434,9 +481,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CC400EB51CFFD9B300A1B490 /* Build configuration list for PBXNativeTarget "HJMethod" */;
 			buildPhases = (
+				1A2669ADCADFB7E176C958D7 /* Check Pods Manifest.lock */,
 				CC400E841CFFD9B300A1B490 /* Sources */,
 				CC400E851CFFD9B300A1B490 /* Frameworks */,
 				CC400E861CFFD9B300A1B490 /* Resources */,
+				EED2F6886423D8558BBDCE1B /* Embed Pods Frameworks */,
+				2325B5ED263D1CEEEF2DC273 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -533,6 +583,7 @@
 				CC400E9B1CFFD9B300A1B490 /* LaunchScreen.storyboard in Resources */,
 				CC584FEB1D08030700F77FD8 /* new_feature_1.png in Resources */,
 				CC584FEE1D08030700F77FD8 /* new_feature_4.png in Resources */,
+				CC5705A61D0EC2DD00A7D5C1 /* HJShoppingCell.xib in Resources */,
 				CC400E981CFFD9B300A1B490 /* Assets.xcassets in Resources */,
 				CC584FED1D08030700F77FD8 /* new_feature_3.png in Resources */,
 				CC400E961CFFD9B300A1B490 /* Main.storyboard in Resources */,
@@ -557,35 +608,79 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1A2669ADCADFB7E176C958D7 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		2325B5ED263D1CEEEF2DC273 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EED2F6886423D8558BBDCE1B /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CC400E841CFFD9B300A1B490 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC584FBB1D07B8E600F77FD8 /* MASConstraint.m in Sources */,
+				CC57046F1D0E928800A7D5C1 /* HJShoppingBottomBar.m in Sources */,
 				CC98180A1D053EC5005301CF /* NSDate+HJExtension.m in Sources */,
-				CC584FC31D07B8E600F77FD8 /* ViewController+MASAdditions.m in Sources */,
 				CC655F591D066041009856A5 /* NSDictionary+ZXPUnicode.m in Sources */,
 				CC9818071D053E83005301CF /* HJFunction.m in Sources */,
 				CC400E931CFFD9B300A1B490 /* ViewController.m in Sources */,
-				CC584FBA1D07B8E600F77FD8 /* MASCompositeConstraint.m in Sources */,
+				CC5705A91D0F909400A7D5C1 /* HJShoppingCount.m in Sources */,
+				CC5705A51D0EC2DD00A7D5C1 /* HJShoppingCell.m in Sources */,
 				CC400E901CFFD9B300A1B490 /* AppDelegate.m in Sources */,
-				CC584FBC1D07B8E600F77FD8 /* MASConstraintMaker.m in Sources */,
-				CC584FC21D07B8E600F77FD8 /* View+MASAdditions.m in Sources */,
 				CC655F581D066041009856A5 /* NSArray+ ZXPUnicode.m in Sources */,
-				CC584FBE1D07B8E600F77FD8 /* MASViewAttribute.m in Sources */,
 				CC400ECB1CFFF48000A1B490 /* UIColor+HJExtension.m in Sources */,
-				CC584FC11D07B8E600F77FD8 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				CC655F5B1D066041009856A5 /* NSObject+ZXPUnicode.m in Sources */,
 				CC400EC61CFFDBF300A1B490 /* UIView+HJExtension.m in Sources */,
 				CC584FF31D08036A00F77FD8 /* HJDownAlertView.m in Sources */,
+				CC57E6F31D0D592D00858E4A /* HJShoppingCartController.m in Sources */,
 				CC655F601D06D94E009856A5 /* TouchID.m in Sources */,
-				CC584FC01D07B8E600F77FD8 /* NSArray+MASAdditions.m in Sources */,
+				CC5705A11D0EC16800A7D5C1 /* HJShoppingService.m in Sources */,
 				CC584FEF1D08030700F77FD8 /* HJGuideController.m in Sources */,
-				CC584FBF1D07B8E600F77FD8 /* MASViewConstraint.m in Sources */,
 				CC98180E1D05409A005301CF /* UIImage+HJExtension.m in Sources */,
 				CC400E8D1CFFD9B300A1B490 /* main.m in Sources */,
-				CC584FBD1D07B8E600F77FD8 /* MASLayoutConstraint.m in Sources */,
+				CC57E6EB1D0D4A0100858E4A /* HJCircleColorView.m in Sources */,
 				CC9817F61D0507E1005301CF /* NSString+HJExtension.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -725,8 +820,10 @@
 		};
 		CC400EB61CFFD9B300A1B490 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3C08642996B6FAE5ECB05795 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/HJMethod/PrefixHeader.pch";
 				INFOPLIST_FILE = HJMethod/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -737,8 +834,10 @@
 		};
 		CC400EB71CFFD9B300A1B490 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C08A2FB2F3647FB1436AE11B /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/HJMethod/PrefixHeader.pch";
 				INFOPLIST_FILE = HJMethod/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

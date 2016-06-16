@@ -10,6 +10,30 @@
 #import "HJTool.h"
 #import <Availability.h>
 #import "HJDownAlertView.h"
+#import "HJCircleColorView.h"
+#import "HJShoppingCartController.h"
+
+
+@interface HJJJJJJ : NSObject
+/**<#描述#>*/
+@property (nonatomic, assign)CGFloat width;
+/**<#描述#>*/
+@property (nonatomic, assign)CGFloat height;
+- (instancetype)initWithWidth:(CGFloat)width height:(CGFloat)height;
+@end
+@implementation HJJJJJJ
+- (instancetype)initWithWidth:(CGFloat)width height:(CGFloat)height {
+    if (self = [super init]) {
+        _width = width;
+        _height = height;
+    }
+    return self;
+}
+- (instancetype)init {
+    //不会死循环, 注意上面的方法是super init方法
+    return [self initWithWidth:5 height:5];
+}
+@end
 
 @interface ViewController ()
 /**hj*/
@@ -19,12 +43,13 @@
 @implementation ViewController
 - (void)button:(UIButton *)button {
     if (!self.downAlertView) {
-        self.downAlertView = [HJDownAlertView downAlertViewWithTitle:@"提示" contentText:@"自\n定\n义\n弹\n出\n,\n高\n度\n自\n适\n应\n!" buttonTitle:@"取消" buttonBlock:^{
-            self.view.backgroundColor = [UIColor hj_randomColor];
-        }];
+        self.downAlertView = [HJDownAlertView downAlertViewWithTitle:@"提示" contentText:@"你还没有开启通知,开启通知,实时掌握动态!\n是否现在去打开?" buttonTitle:@"确定" buttonBlock:nil];
     }
     [self.downAlertView show];
 
+}
+- (void)gwc {
+    [self.navigationController pushViewController:[[HJShoppingCartController alloc] init] animated:YES];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -35,6 +60,18 @@
     [button addTarget:self action:@selector(button:) forControlEvents:(UIControlEventTouchUpInside)];
     button.center = self.view.center;
     [self.view addSubview:button];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:(UIBarButtonSystemItemAdd) target:self action:@selector(gwc)];
+    
+    /*
+     //旋转的环形进度条
+    HJCircleColorView *circle = [[HJCircleColorView alloc] initWithFrame:CGRectMake(0, 44, 100, 100)];
+    [circle startAnimation];
+    [self.view addSubview:circle];
+    */
+    
+    
+
     
 //    self.view.backgroundColor = kColorFromRGBValue(292213);
 //    self.view.backgroundColor = [UIColor colorFromHexString:@"0xabcdef"];
@@ -73,6 +110,9 @@
         XHJLog(@"%@", [@"123456" hj_safedStringWithType:(EncryptTypeMD5)]);
 //    [self.view hj_snapshotsWithType:(HJViewSnapshotsTypeSandbox)];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    HJJJJJJ *jajj = [[HJJJJJJ alloc] init];
+    NSLog(@"%f--%f", jajj.height, jajj.width);
 }
 
 - (void)animationDidStart:(CAAnimation *)anim {}
@@ -82,3 +122,4 @@
 }
 
 @end
+

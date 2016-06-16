@@ -10,6 +10,15 @@
 
 @interface HJDownAlertView : UIView
 
+/**标题*/
+@property (nonatomic, copy)NSString *title;
+/**按钮标题*/
+@property (nonatomic, copy)NSString *buttonTitle;
+/**提示语*/
+@property (nonatomic, copy)NSString *contentText;
+/**按钮点击block*/
+@property (nonatomic, copy)void (^buttonClick)();
+
 - (void)show;
 
 - (void)dismiss;
