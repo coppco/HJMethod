@@ -25,11 +25,38 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="cqZ-cM-PkL"/>
+                    <navigationItem key="navigationItem" id="cqZ-cM-PkL">
+                        <barButtonItem key="leftBarButtonItem" title="测试无数据集合" id="jj9-LB-m0N">
+                            <connections>
+                                <action selector="toNoData:" destination="BYZ-38-t0r" id="gDN-V3-adG"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="xqr-yG-gL0" kind="show" identifier="toNoData" id="gvn-6M-YB0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1152" y="247"/>
+            <point key="canvasLocation" x="1017" y="247"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="7W5-BS-eOK">
+            <objects>
+                <tableViewController id="xqr-yG-gL0" customClass="TableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="mMd-86-ekF">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="xqr-yG-gL0" id="YDg-VE-jNt"/>
+                            <outlet property="delegate" destination="xqr-yG-gL0" id="sS4-Ur-cln"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v0u-8P-Z0n" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1793" y="247"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Ech-37-dDC">

@@ -41,9 +41,24 @@
 @end
 
 @implementation ViewController
+- (IBAction)toNoData:(UIBarButtonItem *)sender {
+    [self performSegueWithIdentifier:@"toNoData" sender:nil];
+}
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"toNoData"]) {
+        segue.destinationViewController.title = @"测试无数据";
+    }
+}
 - (void)button:(UIButton *)button {
     if (!self.downAlertView) {
         self.downAlertView = [HJDownAlertView downAlertViewWithTitle:@"提示" contentText:@"你还没有开启通知,开启通知,实时掌握动态!\n是否现在去打开?" buttonTitle:@"确定" buttonBlock:nil];
+//        self.downAlertView = [[HJDownAlertView alloc] init];
+//        self.downAlertView.title = @"提示";
+//        self.downAlertView.buttonTitle = @"确定";
+//        self.downAlertView.buttonClick = ^() {
+//            NSLog(@"111");
+//        };
+//        self.downAlertView.contentText = @"你还没有开启通知,开启通知,实时掌握动态!\n是否\n现在\n去打\n开h\nhhhhhhhhhh?";
     }
     [self.downAlertView show];
 
@@ -113,6 +128,7 @@
     
     HJJJJJJ *jajj = [[HJJJJJJ alloc] init];
     NSLog(@"%f--%f", jajj.height, jajj.width);
+    NSLog(@"====%d", [@"hsdfd" hj_isOnlyLetters]);
 }
 
 - (void)animationDidStart:(CAAnimation *)anim {}

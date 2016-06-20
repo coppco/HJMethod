@@ -72,40 +72,80 @@
     }
     return self;
 }
-
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.backgroundColor = [UIColor whiteColor];
+        self.layer.cornerRadius = 5;
+    }
+    return self;
+}
+#pragma mark - 懒加载
+- (UILabel *)titleL {
+    if (!_titleL) {
+        _titleL = ({
+            UILabel *object = [[UILabel alloc] init];
+            object = [[UILabel alloc] init];
+            object.numberOfLines = 1;
+            object.textAlignment = NSTextAlignmentCenter;
+            object.adjustsFontSizeToFitWidth = YES;
+            object.font = [UIFont systemFontOfSize:20 weight:1];
+            object.textColor = [UIColor blackColor];
+            object.text = self.title;
+            object;
+        });
+    }
+    return _titleL;
+}
+- (UILabel *)contentTextL {
+    if (!_contentTextL) {
+        _contentTextL = ({
+            UILabel *object = [[UILabel alloc] init];
+            object = [[UILabel alloc] init];
+            object.text = self.contentText;
+            object.numberOfLines = 0;
+            object.font = [UIFont systemFontOfSize:15];
+            object.textAlignment = NSTextAlignmentCenter;
+            object.textColor = [UIColor colorWithRed:127.0/255.0 green:127.0/255.0 blue:127.0/255.0 alpha:1];
+            object;
+        });
+    }
+    return _contentTextL;
+}
+- (UIButton *)closeB {
+    if (!_closeB) {
+        _closeB = ({
+            UIButton *object = [UIButton buttonWithType:(UIButtonTypeCustom)];
+            [object setImage:[UIImage imageNamed:@"alertView_close"] forState:(UIControlStateNormal)];
+            [object addTarget:self action:@selector(buttonHasClick:) forControlEvents:(UIControlEventTouchUpInside)];
+            object;
+        });
+    }
+    return _closeB;
+}
+- (UIButton *)operationB {
+    if (!_operationB) {
+        _operationB = ({
+            UIButton *object = [UIButton buttonWithType:(UIButtonTypeCustom)];
+            object.layer.cornerRadius = 5;
+            [object setTitle:self.buttonTitle forState:(UIControlStateNormal)];
+            [object setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
+            [object setBackgroundColor:[UIColor colorWithRed:227.0/255.0
+                                                                green:100.0/255.0
+                                                                 blue:83.0/255.0
+                                                                alpha:1]];
+            object.titleLabel.font = [UIFont systemFontOfSize:14];
+            [object addTarget:self action:@selector(buttonHasClick:) forControlEvents:(UIControlEventTouchUpInside)];
+            object;
+        });
+    }
+    return _operationB;
+}
 - (void)configSubview {
-    self.titleL = [[UILabel alloc] init];
-    self.titleL.numberOfLines = 1;
-    self.titleL.textAlignment = NSTextAlignmentCenter;
-    self.titleL.adjustsFontSizeToFitWidth = YES;
-    self.titleL.font = [UIFont systemFontOfSize:20 weight:1];
-    self.titleL.textColor = [UIColor blackColor];
-    self.titleL.text = self.title;
+    
     [self addSubview:self.titleL];
-    
-    self.contentTextL = [[UILabel alloc] init];
-    self.contentTextL.text = self.contentText;
-    self.contentTextL.numberOfLines = 0;
-    self.contentTextL.font = [UIFont systemFontOfSize:15];
-    self.contentTextL.textAlignment = NSTextAlignmentCenter;
-    self.contentTextL.textColor = [UIColor colorWithRed:127.0/255.0 green:127.0/255.0 blue:127.0/255.0 alpha:1];
     [self addSubview:self.contentTextL];
-    
-    self.closeB = [UIButton buttonWithType:(UIButtonTypeCustom)];
-    [self.closeB setImage:[UIImage imageNamed:@"alertView_close"] forState:(UIControlStateNormal)];
-    [self.closeB addTarget:self action:@selector(buttonHasClick:) forControlEvents:(UIControlEventTouchUpInside)];
     [self addSubview:self.closeB];
-    
-    self.operationB = [UIButton buttonWithType:(UIButtonTypeCustom)];
-    self.operationB.layer.cornerRadius = 5;
-    [self.operationB setTitle:self.buttonTitle forState:(UIControlStateNormal)];
-    [self.operationB setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
-    [self.operationB setBackgroundColor:[UIColor colorWithRed:227.0/255.0
-                                                        green:100.0/255.0
-                                                         blue:83.0/255.0
-                                                        alpha:1]];
-    self.operationB.titleLabel.font = [UIFont systemFontOfSize:14];
-    [self.operationB addTarget:self action:@selector(buttonHasClick:) forControlEvents:(UIControlEventTouchUpInside)];
     [self addSubview:self.operationB];
     
     [self.closeB mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -142,7 +182,6 @@
             self.buttonClick();
         }
     }
-    //
     [self dismiss];
 }
 //显示
@@ -151,8 +190,8 @@
     
     if (!self.backView) {
         self.backView = [[UIView alloc] initWithFrame:window.bounds];
+        self.backView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.6];
     }
-    self.backView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.6];
     [window addSubview:self.backView];
     [window addSubview:self];
 
@@ -229,14 +268,17 @@
 #pragma - mark setter方法和getter 方法
 - (void)setTitle:(NSString *)title {
     _title = title;
+    [self configSubview];
     self.titleL.text = title;
 }
 - (void)setButtonTitle:(NSString *)buttonTitle {
     _buttonTitle = buttonTitle;
+    [self configSubview];
     [self.operationB setTitle:buttonTitle forState:(UIControlStateNormal)];
 }
 - (void)setContentText:(NSString *)contentText {
     _contentText = contentText;
+    [self configSubview];
     _contentTextL.text = contentText;
 }
 

@@ -5,7 +5,10 @@
 //  Created by coco on 16/6/2.
 //  Copyright © 2016年 XHJ. All rights reserved.
 //
-
+/*
+去掉NSAssert断言具体方法如下：
+选择项目，点击Building Setting菜单，搜索Preprocessor Macros，出现如下界面，双击release，出现对话框，点＋号，添加字段：NS_BLOCK_ASSERTIONS
+*/
 #ifndef HJCommonDefine_h
 #define HJCommonDefine_h
 
