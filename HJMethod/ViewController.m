@@ -12,7 +12,7 @@
 #import "HJDownAlertView.h"
 #import "HJCircleColorView.h"
 #import "HJShoppingCartController.h"
-
+#import "CubeButton.h"
 
 @interface HJJJJJJ : NSObject
 /**<#描述#>*/
@@ -50,8 +50,8 @@
     }
 }
 - (void)button:(UIButton *)button {
-    if (!self.downAlertView) {
-        self.downAlertView = [HJDownAlertView downAlertViewWithTitle:@"提示" contentText:@"你还没有开启通知,开启通知,实时掌握动态!\n是否现在去打开?" buttonTitle:@"确定" buttonBlock:nil];
+//    if (!self.downAlertView) {
+//        self.downAlertView = [HJDownAlertView downAlertViewWithTitle:@"提示" contentText:@"你还没有开启通知,开启通知,实时掌握动态!\n是否现在去打开?" buttonTitle:@"确定" buttonBlock:nil];
 //        self.downAlertView = [[HJDownAlertView alloc] init];
 //        self.downAlertView.title = @"提示";
 //        self.downAlertView.buttonTitle = @"确定";
@@ -59,9 +59,23 @@
 //            NSLog(@"111");
 //        };
 //        self.downAlertView.contentText = @"你还没有开启通知,开启通知,实时掌握动态!\n是否\n现在\n去打\n开h\nhhhhhhhhhh?";
-    }
-    [self.downAlertView show];
+//    }
+//    [self.downAlertView show];
 
+//    CubeButton *bu = [CubeButton cubeButtonWithButtonTitles:@[@"按钮1", @"按钮2", @"按钮3"] buttonClick:@[^() {
+//        NSLog(@"按钮1");
+//    },^() {
+//        NSLog(@"按钮2");
+//    },^() {
+//        NSLog(@"按钮3");
+//    }]];
+//    bu.frame = CGRectMake(100, 100, 100, 100);
+//    [self.view addSubview:bu];
+    
+    
+    [self.view configTipViewHasData:NO hasError:YES reloadButtonBlock:^{
+        NSLog(@"没数据");
+    }];
 }
 - (void)gwc {
     [self.navigationController pushViewController:[[HJShoppingCartController alloc] init] animated:YES];

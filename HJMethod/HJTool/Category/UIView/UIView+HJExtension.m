@@ -7,9 +7,11 @@
 //
 
 #import "UIView+HJExtension.h"
+
 //快照保存地址
 #define kSnapshot [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:@"HJSnapshots"]
 
+//分类
 @implementation UIView (HJExtension)
 
 //   x坐标
@@ -381,38 +383,9 @@
         size = [self systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
         [self removeConstraint:tempWidthConstraint];
     }
-    NSLog(@"%@", NSStringFromCGSize(size));
+    XHJLog(@"%@", NSStringFromCGSize(size));
     return size;
 }
 
-//没有数据或者网络错误的时候
-- (void)configTipViewHasData:(BOOL)hasData hasError:(BOOL)hasError reloadButtonBlock:(void (^)())reloadButtonBlock {
-    if (hasData) {
-        if (self.tipView) {
-            self.tipView.hidden = YES;
-            [self.tipView removeFromSuperview];
-        }
-    } else {
-        if (!self.tipView) {
-            self.tipView = ({
-                HJTipView *tipView = [[HJTipView alloc] initWithFrame:self.bounds];
-                tipView.hidden = NO;
-                tipView;
-            });
-        }
-        [self addSubview:self.tipView];
-        [self.tipView configTipViewHasData:hasData hasError:hasError reloadButtonBlock:reloadButtonBlock];
-    }
-}
-
-
-
 @end
 
-@implementation HJTipView
-
-- (void)configTipViewHasData:(BOOL)hasData hasError:(BOOL)hasError reloadButtonBlock:(void (^)())reloadButtonBlock {
-    
-}
-
-@end

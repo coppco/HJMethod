@@ -139,7 +139,6 @@ typedef NS_ENUM(NSInteger, DirectionType) {
  */
 - (BOOL)hj_enforceFrameLayout;
 
-//加载时的动画
 
 /**
  *  返回自动布局的size
@@ -148,20 +147,7 @@ typedef NS_ENUM(NSInteger, DirectionType) {
  */
 - (CGSize)autoLayoutSizeWithWidth:(CGFloat)width;
 
-//无数据或者网络错误时候的显示视图
-/**tipView*/
-@property (nonatomic, strong)HJTipView *tipView;
-- (void)configTipViewHasData:(BOOL)hasData hasError:(BOOL)hasError reloadButtonBlock:(void (^)())reloadButtonBlock;
 @end
 
-@interface HJTipView : UIView
-/**图片*/
-@property (nonatomic, strong)UIImageView *imageView;
-/**文字*/
-@property (nonatomic, strong)UILabel *tipLabel;
-/**重新加载按钮*/
-@property (nonatomic, strong)UIButton *reloadButton;
-/**重新加载按钮执行block*/
-@property (nonatomic, copy)void (^reloadButtonBlock)();
-- (void)configTipViewHasData:(BOOL)hasData hasError:(BOOL)hasError reloadButtonBlock:(void (^)())reloadButtonBlock;
-@end
+
+

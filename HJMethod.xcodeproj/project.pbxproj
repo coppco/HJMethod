@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		264E3AB93504AE3C5FC2B82A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9341DB962B0730E08D3D0413 /* libPods.a */; };
+		CC05A6031D18D7EE00C0AED9 /* CubeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CC05A6021D18D7EE00C0AED9 /* CubeButton.m */; };
 		CC400E8D1CFFD9B300A1B490 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CC400E8C1CFFD9B300A1B490 /* main.m */; };
 		CC400E901CFFD9B300A1B490 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CC400E8F1CFFD9B300A1B490 /* AppDelegate.m */; };
 		CC400E931CFFD9B300A1B490 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC400E921CFFD9B300A1B490 /* ViewController.m */; };
@@ -38,6 +39,7 @@
 		CC655F5B1D066041009856A5 /* NSObject+ZXPUnicode.m in Sources */ = {isa = PBXBuildFile; fileRef = CC655F571D066041009856A5 /* NSObject+ZXPUnicode.m */; };
 		CC655F5D1D068775009856A5 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CC655F5C1D068775009856A5 /* libz.tbd */; };
 		CC655F601D06D94E009856A5 /* TouchID.m in Sources */ = {isa = PBXBuildFile; fileRef = CC655F5F1D06D94E009856A5 /* TouchID.m */; };
+		CC82274A1D193D4300780911 /* UIView+HJTipExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = CC8227491D193D4300780911 /* UIView+HJTipExtension.m */; };
 		CC9817F61D0507E1005301CF /* NSString+HJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9817F51D0507E1005301CF /* NSString+HJExtension.m */; };
 		CC9818071D053E83005301CF /* HJFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9818061D053E83005301CF /* HJFunction.m */; };
 		CC98180A1D053EC5005301CF /* NSDate+HJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9818091D053EC5005301CF /* NSDate+HJExtension.m */; };
@@ -65,6 +67,8 @@
 		3C08642996B6FAE5ECB05795 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		9341DB962B0730E08D3D0413 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C08A2FB2F3647FB1436AE11B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		CC05A6011D18D7EE00C0AED9 /* CubeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CubeButton.h; sourceTree = "<group>"; };
+		CC05A6021D18D7EE00C0AED9 /* CubeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CubeButton.m; sourceTree = "<group>"; };
 		CC400E881CFFD9B300A1B490 /* HJMethod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HJMethod.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC400E8C1CFFD9B300A1B490 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CC400E8E1CFFD9B300A1B490 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -121,6 +125,8 @@
 		CC655F5C1D068775009856A5 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		CC655F5E1D06D94E009856A5 /* TouchID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchID.h; sourceTree = "<group>"; };
 		CC655F5F1D06D94E009856A5 /* TouchID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchID.m; sourceTree = "<group>"; };
+		CC8227481D193D4300780911 /* UIView+HJTipExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+HJTipExtension.h"; sourceTree = "<group>"; };
+		CC8227491D193D4300780911 /* UIView+HJTipExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+HJTipExtension.m"; sourceTree = "<group>"; };
 		CC9817F41D0507E1005301CF /* NSString+HJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HJExtension.h"; sourceTree = "<group>"; };
 		CC9817F51D0507E1005301CF /* NSString+HJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HJExtension.m"; sourceTree = "<group>"; };
 		CC9818051D053E83005301CF /* HJFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJFunction.h; sourceTree = "<group>"; };
@@ -173,6 +179,15 @@
 				9341DB962B0730E08D3D0413 /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CC05A6001D18D7CE00C0AED9 /* CubeButton(立方体按钮) */ = {
+			isa = PBXGroup;
+			children = (
+				CC05A6011D18D7EE00C0AED9 /* CubeButton.h */,
+				CC05A6021D18D7EE00C0AED9 /* CubeButton.m */,
+			);
+			path = "CubeButton(立方体按钮)";
 			sourceTree = "<group>";
 		};
 		CC400E7F1CFFD9B300A1B490 = {
@@ -285,6 +300,8 @@
 			children = (
 				CC400EC41CFFDBF300A1B490 /* UIView+HJExtension.h */,
 				CC400EC51CFFDBF300A1B490 /* UIView+HJExtension.m */,
+				CC8227481D193D4300780911 /* UIView+HJTipExtension.h */,
+				CC8227491D193D4300780911 /* UIView+HJTipExtension.m */,
 			);
 			path = UIView;
 			sourceTree = "<group>";
@@ -374,6 +391,7 @@
 		CC584FCD1D07EB0500F77FD8 /* PublicLibary */ = {
 			isa = PBXGroup;
 			children = (
+				CC05A6001D18D7CE00C0AED9 /* CubeButton(立方体按钮) */,
 				CC57E6ED1D0D591000858E4A /* HJShoppingCart(购物车) */,
 				CC57E6EC1D0D4A9D00858E4A /* CircleProgressView(环形进度条) */,
 				CC57E6E81D0D4A0100858E4A /* CircleView(圆形旋转彩色提示框) */,
@@ -673,6 +691,7 @@
 				CC400E931CFFD9B300A1B490 /* ViewController.m in Sources */,
 				CC5705A91D0F909400A7D5C1 /* HJShoppingCount.m in Sources */,
 				CC5705A51D0EC2DD00A7D5C1 /* HJShoppingCell.m in Sources */,
+				CC05A6031D18D7EE00C0AED9 /* CubeButton.m in Sources */,
 				CC400E901CFFD9B300A1B490 /* AppDelegate.m in Sources */,
 				CC655F581D066041009856A5 /* NSArray+ ZXPUnicode.m in Sources */,
 				CC400ECB1CFFF48000A1B490 /* UIColor+HJExtension.m in Sources */,
@@ -683,6 +702,7 @@
 				CC57E6F31D0D592D00858E4A /* HJShoppingCartController.m in Sources */,
 				CC655F601D06D94E009856A5 /* TouchID.m in Sources */,
 				CC5705A11D0EC16800A7D5C1 /* HJShoppingService.m in Sources */,
+				CC82274A1D193D4300780911 /* UIView+HJTipExtension.m in Sources */,
 				CC584FEF1D08030700F77FD8 /* HJGuideController.m in Sources */,
 				CC98180E1D05409A005301CF /* UIImage+HJExtension.m in Sources */,
 				CC400E8D1CFFD9B300A1B490 /* main.m in Sources */,
@@ -829,12 +849,15 @@
 			baseConfigurationReference = 3C08642996B6FAE5ECB05795 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/HJMethod/PrefixHeader.pch";
 				INFOPLIST_FILE = HJMethod/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = cn.coppco.HJMethod;
+				PRODUCT_BUNDLE_IDENTIFIER = com.coppco.HJMethod;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "a994f237-b04e-4caf-93aa-9413c1e67839";
 			};
 			name = Debug;
 		};
@@ -843,12 +866,15 @@
 			baseConfigurationReference = C08A2FB2F3647FB1436AE11B /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/HJMethod/PrefixHeader.pch";
 				INFOPLIST_FILE = HJMethod/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = cn.coppco.HJMethod;
+				PRODUCT_BUNDLE_IDENTIFIER = com.coppco.HJMethod;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "a994f237-b04e-4caf-93aa-9413c1e67839";
 			};
 			name = Release;
 		};

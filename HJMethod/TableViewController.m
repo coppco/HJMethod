@@ -9,7 +9,8 @@
 #import "TableViewController.h"
 #import <UIScrollView+EmptyDataSet.h>
 @interface TableViewController ()<DZNEmptyDataSetDelegate, DZNEmptyDataSetSource>
-
+/**<#描述#>*/
+@property (nonatomic, assign)BOOL data;
 @end
 
 @implementation TableViewController
@@ -17,11 +18,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.tableFooterView = [[UIView alloc] init];
-    self.tableView.emptyDataSetDelegate = self;
-    self.tableView.emptyDataSetSource = self;
-    
+//    self.tableView.emptyDataSetDelegate = self;
+//    self.tableView.emptyDataSetSource = self;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:(UIBarButtonSystemItemAdd) target:self action:@selector(refresh)];
 }
-
+- (void)refresh {
+    [self.view configTipViewHasData:NO hasError:!_data reloadButtonBlock:^{
+        NSLog(@"的剪辑");
+    }];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

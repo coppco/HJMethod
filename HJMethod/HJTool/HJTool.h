@@ -12,6 +12,7 @@
 #ifdef __OBJC__
 /*=========一些分类=========*/
 #import "UIView+HJExtension.h"  //UIView的常用属性
+#import "UIView+HJTipExtension.h"  //错误无数据提示
 #import "UIColor+HJExtension.h"  //UIColor的分类
 #import "NSString+HJExtension.h"  //NSString的分类
 #import "NSDate+HJExtension.h"  //NSDate的分类
