@@ -112,6 +112,12 @@ static const NSString *kHJTipViewKey = @"HJTipViewKey";
 @end
 
 
+
+
+@interface UIView (HJTipExtension1)
+/**NoData无数据视图*/
+@property (nonatomic, strong)HJTipView *tipView;
+@end
 //分类
 
 @implementation UIView (HJTipExtension)
@@ -138,27 +144,29 @@ static const NSString *kHJTipViewKey = @"HJTipViewKey";
     } else {
         if (!self.tipView) {
             self.tipView = ({
-                HJTipView *tipView = [[HJTipView alloc] initWithFrame:self.blankPageContainer.bounds];
-                tipView.hidden = NO;
+                HJTipView *tipView = [[HJTipView alloc] initWithFrame:self.noDataContainer.bounds];
                 tipView;
             });
         }
-        [self.blankPageContainer addSubview:self.tipView];
-//        [self.tipView mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.edges.equalTo(self);
-//        }];
+        self.tipView.hidden = NO;
+        [self.noDataContainer addSubview:self.tipView];
+        [self.tipView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.top.mas_equalTo(0);
+            make.size.equalTo(self.noDataContainer);
+        }];
         [self.tipView configViewWithHasData:hasData hasError:hasError reloadButtonBlock:reloadButtonBlock];
     }
 }
 
-- (UIView *)blankPageContainer{
-    UIView *blankPageContainer = self;
+- (UIView *)noDataContainer{
+    UIView *noDataContainer = self;
     for (UIView *aView in [self subviews]) {
         if ([aView isKindOfClass:[UITableView class]]) {
-            blankPageContainer = aView;
+            noDataContainer = aView;
         }
     }
-    return blankPageContainer;
+    NSLog(@"%@", noDataContainer);
+    return noDataContainer;
 }
 
 @end

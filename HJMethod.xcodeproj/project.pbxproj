@@ -39,6 +39,7 @@
 		CC655F5B1D066041009856A5 /* NSObject+ZXPUnicode.m in Sources */ = {isa = PBXBuildFile; fileRef = CC655F571D066041009856A5 /* NSObject+ZXPUnicode.m */; };
 		CC655F5D1D068775009856A5 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CC655F5C1D068775009856A5 /* libz.tbd */; };
 		CC655F601D06D94E009856A5 /* TouchID.m in Sources */ = {isa = PBXBuildFile; fileRef = CC655F5F1D06D94E009856A5 /* TouchID.m */; };
+		CC68AF9E1D1A65D60030B6DC /* HJMarqueeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC68AF9D1D1A65D60030B6DC /* HJMarqueeLabel.m */; };
 		CC82274A1D193D4300780911 /* UIView+HJTipExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = CC8227491D193D4300780911 /* UIView+HJTipExtension.m */; };
 		CC9817F61D0507E1005301CF /* NSString+HJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9817F51D0507E1005301CF /* NSString+HJExtension.m */; };
 		CC9818071D053E83005301CF /* HJFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9818061D053E83005301CF /* HJFunction.m */; };
@@ -125,6 +126,8 @@
 		CC655F5C1D068775009856A5 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		CC655F5E1D06D94E009856A5 /* TouchID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchID.h; sourceTree = "<group>"; };
 		CC655F5F1D06D94E009856A5 /* TouchID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchID.m; sourceTree = "<group>"; };
+		CC68AF9C1D1A65D60030B6DC /* HJMarqueeLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJMarqueeLabel.h; sourceTree = "<group>"; };
+		CC68AF9D1D1A65D60030B6DC /* HJMarqueeLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJMarqueeLabel.m; sourceTree = "<group>"; };
 		CC8227481D193D4300780911 /* UIView+HJTipExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+HJTipExtension.h"; sourceTree = "<group>"; };
 		CC8227491D193D4300780911 /* UIView+HJTipExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+HJTipExtension.m"; sourceTree = "<group>"; };
 		CC9817F41D0507E1005301CF /* NSString+HJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HJExtension.h"; sourceTree = "<group>"; };
@@ -275,6 +278,7 @@
 		CC400EBF1CFFDAE200A1B490 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				CC68AF881D1A451D0030B6DC /* UILabel */,
 				CC655F4D1D066041009856A5 /* NSArray */,
 				CC655F501D066041009856A5 /* NSDictionary */,
 				CC655F531D066041009856A5 /* NSObject */,
@@ -391,6 +395,7 @@
 		CC584FCD1D07EB0500F77FD8 /* PublicLibary */ = {
 			isa = PBXGroup;
 			children = (
+				CC68AF9B1D1A65CD0030B6DC /* HJMarqueeLabel(跑马灯) */,
 				CC05A6001D18D7CE00C0AED9 /* CubeButton(立方体按钮) */,
 				CC57E6ED1D0D591000858E4A /* HJShoppingCart(购物车) */,
 				CC57E6EC1D0D4A9D00858E4A /* CircleProgressView(环形进度条) */,
@@ -457,6 +462,22 @@
 				CC655F571D066041009856A5 /* NSObject+ZXPUnicode.m */,
 			);
 			path = NSObject;
+			sourceTree = "<group>";
+		};
+		CC68AF881D1A451D0030B6DC /* UILabel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UILabel;
+			sourceTree = "<group>";
+		};
+		CC68AF9B1D1A65CD0030B6DC /* HJMarqueeLabel(跑马灯) */ = {
+			isa = PBXGroup;
+			children = (
+				CC68AF9C1D1A65D60030B6DC /* HJMarqueeLabel.h */,
+				CC68AF9D1D1A65D60030B6DC /* HJMarqueeLabel.m */,
+			);
+			path = "HJMarqueeLabel(跑马灯)";
 			sourceTree = "<group>";
 		};
 		CC9817F01D05076E005301CF /* NSString */ = {
@@ -694,6 +715,7 @@
 				CC05A6031D18D7EE00C0AED9 /* CubeButton.m in Sources */,
 				CC400E901CFFD9B300A1B490 /* AppDelegate.m in Sources */,
 				CC655F581D066041009856A5 /* NSArray+ ZXPUnicode.m in Sources */,
+				CC68AF9E1D1A65D60030B6DC /* HJMarqueeLabel.m in Sources */,
 				CC400ECB1CFFF48000A1B490 /* UIColor+HJExtension.m in Sources */,
 				CC655F5B1D066041009856A5 /* NSObject+ZXPUnicode.m in Sources */,
 				CC5BAA4B1D12A15C007E0B6A /* TableViewController.m in Sources */,

@@ -23,9 +23,11 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:(UIBarButtonSystemItemAdd) target:self action:@selector(refresh)];
 }
 - (void)refresh {
-    [self.view configTipViewHasData:NO hasError:!_data reloadButtonBlock:^{
+    [self.view configTipViewHasData:_data hasError:!_data reloadButtonBlock:^{
         NSLog(@"的剪辑");
+        [self refresh];
     }];
+    _data = !_data;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

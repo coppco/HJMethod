@@ -13,7 +13,7 @@
 #import "HJCircleColorView.h"
 #import "HJShoppingCartController.h"
 #import "CubeButton.h"
-
+#import "HJMarqueeLabel.h"  //跑马灯
 @interface HJJJJJJ : NSObject
 /**<#描述#>*/
 @property (nonatomic, assign)CGFloat width;
@@ -38,6 +38,9 @@
 @interface ViewController ()
 /**hj*/
 @property (nonatomic, strong)HJDownAlertView *downAlertView;
+
+/**<#描述#>*/
+@property (nonatomic, strong)HJMarqueeLabel *marquee;
 @end
 
 @implementation ViewController
@@ -72,10 +75,13 @@
 //    bu.frame = CGRectMake(100, 100, 100, 100);
 //    [self.view addSubview:bu];
     
-    
+    /*
     [self.view configTipViewHasData:NO hasError:YES reloadButtonBlock:^{
         NSLog(@"没数据");
     }];
+    */
+    button.selected = !button.selected;
+    button.selected ? [self.marquee startAnimation] : [self.marquee stopAnimation];
 }
 - (void)gwc {
     [self.navigationController pushViewController:[[HJShoppingCartController alloc] init] animated:YES];
@@ -143,6 +149,14 @@
     HJJJJJJ *jajj = [[HJJJJJJ alloc] init];
     NSLog(@"%f--%f", jajj.height, jajj.width);
     NSLog(@"====%d", [@"hsdfd" hj_isOnlyLetters]);
+    
+    
+    _marquee  = [[HJMarqueeLabel alloc] init];
+    _marquee.frame = CGRectMake(0, 200, 200, 40);
+    _marquee.text = @"12345678901234567890123456789012345678901234567890";
+    _marquee.backgroundColor = [UIColor lightGrayColor];
+    _marquee.textColor = [UIColor blueColor];
+    [self.view addSubview:_marquee];
 }
 
 - (void)animationDidStart:(CAAnimation *)anim {}
