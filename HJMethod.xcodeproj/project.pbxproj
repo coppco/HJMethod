@@ -19,6 +19,7 @@
 		CC400EB11CFFD9B300A1B490 /* HJMethodUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CC400EB01CFFD9B300A1B490 /* HJMethodUITests.m */; };
 		CC400EC61CFFDBF300A1B490 /* UIView+HJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = CC400EC51CFFDBF300A1B490 /* UIView+HJExtension.m */; };
 		CC400ECB1CFFF48000A1B490 /* UIColor+HJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = CC400ECA1CFFF48000A1B490 /* UIColor+HJExtension.m */; };
+		CC4B25E11D2E16B4008D08C9 /* HJAuthorizeFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4B25E01D2E16B4008D08C9 /* HJAuthorizeFunction.m */; };
 		CC57046F1D0E928800A7D5C1 /* HJShoppingBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CC57046E1D0E928800A7D5C1 /* HJShoppingBottomBar.m */; };
 		CC5705A11D0EC16800A7D5C1 /* HJShoppingService.m in Sources */ = {isa = PBXBuildFile; fileRef = CC5705A01D0EC16800A7D5C1 /* HJShoppingService.m */; };
 		CC5705A51D0EC2DD00A7D5C1 /* HJShoppingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC5705A31D0EC2DD00A7D5C1 /* HJShoppingCell.m */; };
@@ -92,6 +93,8 @@
 		CC400EC71CFFDDB400A1B490 /* HJCommonDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HJCommonDefine.h; sourceTree = "<group>"; };
 		CC400EC91CFFF48000A1B490 /* UIColor+HJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HJExtension.h"; sourceTree = "<group>"; };
 		CC400ECA1CFFF48000A1B490 /* UIColor+HJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HJExtension.m"; sourceTree = "<group>"; };
+		CC4B25DF1D2E16B4008D08C9 /* HJAuthorizeFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJAuthorizeFunction.h; sourceTree = "<group>"; };
+		CC4B25E01D2E16B4008D08C9 /* HJAuthorizeFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJAuthorizeFunction.m; sourceTree = "<group>"; };
 		CC57046D1D0E928800A7D5C1 /* HJShoppingBottomBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJShoppingBottomBar.h; sourceTree = "<group>"; };
 		CC57046E1D0E928800A7D5C1 /* HJShoppingBottomBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJShoppingBottomBar.m; sourceTree = "<group>"; };
 		CC5704701D0E982A00A7D5C1 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -505,6 +508,8 @@
 				CC655F5F1D06D94E009856A5 /* TouchID.m */,
 				CC9818051D053E83005301CF /* HJFunction.h */,
 				CC9818061D053E83005301CF /* HJFunction.m */,
+				CC4B25DF1D2E16B4008D08C9 /* HJAuthorizeFunction.h */,
+				CC4B25E01D2E16B4008D08C9 /* HJAuthorizeFunction.m */,
 			);
 			path = Function;
 			sourceTree = "<group>";
@@ -588,6 +593,7 @@
 				TargetAttributes = {
 					CC400E871CFFD9B300A1B490 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 3Y92XXLNT8;
 					};
 					CC400EA01CFFD9B300A1B490 = {
 						CreatedOnToolsVersion = 7.2;
@@ -710,6 +716,7 @@
 				CC655F591D066041009856A5 /* NSDictionary+ZXPUnicode.m in Sources */,
 				CC9818071D053E83005301CF /* HJFunction.m in Sources */,
 				CC400E931CFFD9B300A1B490 /* ViewController.m in Sources */,
+				CC4B25E11D2E16B4008D08C9 /* HJAuthorizeFunction.m in Sources */,
 				CC5705A91D0F909400A7D5C1 /* HJShoppingCount.m in Sources */,
 				CC5705A51D0EC2DD00A7D5C1 /* HJShoppingCell.m in Sources */,
 				CC05A6031D18D7EE00C0AED9 /* CubeButton.m in Sources */,
@@ -877,9 +884,9 @@
 				INFOPLIST_FILE = HJMethod/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.coppco.HJMethod;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.coppco.HJMethod12;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a994f237-b04e-4caf-93aa-9413c1e67839";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -894,9 +901,9 @@
 				INFOPLIST_FILE = HJMethod/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.coppco.HJMethod;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.coppco.HJMethod12;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a994f237-b04e-4caf-93aa-9413c1e67839";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

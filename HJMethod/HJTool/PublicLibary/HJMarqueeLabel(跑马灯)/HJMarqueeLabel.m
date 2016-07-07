@@ -48,11 +48,14 @@
         _keyframeAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform.translation.x"];
         
         _keyframeAnimation.keyTimes = @[@0, @1.0];
-        _keyframeAnimation.duration = 5;
-        _keyframeAnimation.values = @[[NSNumber numberWithFloat:self.frame.size.width],[NSNumber numberWithFloat:-self.labelWidth]];
-        _keyframeAnimation.repeatCount = _repeatCount == 0 ? MAXFLOAT : _repeatCount;
+        _keyframeAnimation.delegate = self;
+        _keyframeAnimation.repeatCount = 1;
+        _keyframeAnimation.removedOnCompletion = NO;
         _keyframeAnimation.timingFunction = [CAMediaTimingFunction functionWithName:@"linear"];
     }
+    _keyframeAnimation.values = @[[NSNumber numberWithFloat:self.frame.size.width],[NSNumber numberWithFloat:-self.labelWidth]];
+    _keyframeAnimation.duration = self.labelWidth / _rate;
+    NSLog(@"%f", self.labelWidth / _rate);
     return _keyframeAnimation;
 }
 
@@ -81,7 +84,7 @@
 - (void)setRepeatCount:(CGFloat)repeatCount {
     _repeatCount = repeatCount;
 //    self.keyframeAnimation.repeatCount = ((repeatCount == 0) ? MAXFLOAT : repeatCount);
-    NSLog(@"%f", ((repeatCount == 0) ? MAXFLOAT : repeatCount));
+
 }
 
 - (void)setSpeedType:(HJMarqueeSpeed)speedType {
@@ -102,6 +105,16 @@
 //    self.keyframeAnimation.duration = self.labelWidth / _rate;
 }
 
+- (void)setTextArray:(NSArray *)textArray {
+    _textArray = textArray;
+    id string = textArray.firstObject;
+    if ([string isKindOfClass:[NSString class]]) {
+        self.text = string;
+    } else if ([string isKindOfClass:[NSAttributedString class]]) {
+        self.attributedText = string;
+    }
+}
+
 //刷新属性等
 - (void)refreshLabelData {
     _text.length != 0 ? (self.titleLabel.text = _text) : (self.titleLabel.attributedText = _attributedText);
@@ -112,7 +125,7 @@
 }
 //获取文本的宽度
 - (CGFloat)labelWidth{
-    return _text.length != 0 ? ([_text boundingRectWithSize:CGSizeMake(10000, self.frame.size.height) options:(NSStringDrawingUsesLineFragmentOrigin) attributes:@{NSFontAttributeName : self.font} context:nil].size.width) : ([_attributedText boundingRectWithSize:CGSizeMake(10000, self.frame.size.height) options:(NSStringDrawingUsesLineFragmentOrigin) context:nil].size.width);
+    return self.text.length != 0 ? ([self.text boundingRectWithSize:CGSizeMake(10000, self.frame.size.height) options:(NSStringDrawingUsesLineFragmentOrigin) attributes:@{NSFontAttributeName : self.font} context:nil].size.width) : ([_attributedText boundingRectWithSize:CGSizeMake(10000, self.frame.size.height) options:(NSStringDrawingUsesLineFragmentOrigin) context:nil].size.width);
 }
 #pragma mark - 初始化方法
 - (instancetype)initWithFrame:(CGRect)frame {
@@ -158,8 +171,31 @@
     [self.containerView.layer removeAnimationForKey:@"move"];
 }
 - (void)animation {
+    
     [self.containerView.layer removeAnimationForKey:@"move"];
     [self.containerView.layer addAnimation:self.keyframeAnimation forKey:@"move"];
+}
+#pragma mark - animationDelegate
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
+    if (flag) {
+
+        NSInteger index = _text.length != 0 ? [_textArray indexOfObject:_text] : [_textArray indexOfObject:_attributedText];
+        if (index == _textArray.count -1) {
+            index = 0;
+        } else {
+            index = index + 1;
+        }
+        id object = _textArray[index];
+        
+        if ([object isKindOfClass:[NSString class]]) {
+            self.text = object;
+        } else if ([object isKindOfClass:[NSAttributedString class]]) {
+            self.attributedText = object;
+        }
+
+        [self.containerView.layer removeAnimationForKey:@"move"];
+        [self.containerView.layer addAnimation:self.keyframeAnimation forKey:@"move"];
+    }
 }
 
 @end

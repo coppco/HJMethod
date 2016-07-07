@@ -14,26 +14,7 @@
 #import "HJShoppingCartController.h"
 #import "CubeButton.h"
 #import "HJMarqueeLabel.h"  //跑马灯
-@interface HJJJJJJ : NSObject
-/**<#描述#>*/
-@property (nonatomic, assign)CGFloat width;
-/**<#描述#>*/
-@property (nonatomic, assign)CGFloat height;
-- (instancetype)initWithWidth:(CGFloat)width height:(CGFloat)height;
-@end
-@implementation HJJJJJJ
-- (instancetype)initWithWidth:(CGFloat)width height:(CGFloat)height {
-    if (self = [super init]) {
-        _width = width;
-        _height = height;
-    }
-    return self;
-}
-- (instancetype)init {
-    //不会死循环, 注意上面的方法是super init方法
-    return [self initWithWidth:5 height:5];
-}
-@end
+#import "HJAuthorizeFunction.h"
 
 @interface ViewController ()
 /**hj*/
@@ -41,6 +22,7 @@
 
 /**<#描述#>*/
 @property (nonatomic, strong)HJMarqueeLabel *marquee;
+@property (weak, nonatomic) IBOutlet UITextField *input;
 @end
 
 @implementation ViewController
@@ -53,35 +35,42 @@
     }
 }
 - (void)button:(UIButton *)button {
-//    if (!self.downAlertView) {
-//        self.downAlertView = [HJDownAlertView downAlertViewWithTitle:@"提示" contentText:@"你还没有开启通知,开启通知,实时掌握动态!\n是否现在去打开?" buttonTitle:@"确定" buttonBlock:nil];
-//        self.downAlertView = [[HJDownAlertView alloc] init];
-//        self.downAlertView.title = @"提示";
-//        self.downAlertView.buttonTitle = @"确定";
-//        self.downAlertView.buttonClick = ^() {
-//            NSLog(@"111");
-//        };
-//        self.downAlertView.contentText = @"你还没有开启通知,开启通知,实时掌握动态!\n是否\n现在\n去打\n开h\nhhhhhhhhhh?";
-//    }
-//    [self.downAlertView show];
-
-//    CubeButton *bu = [CubeButton cubeButtonWithButtonTitles:@[@"按钮1", @"按钮2", @"按钮3"] buttonClick:@[^() {
-//        NSLog(@"按钮1");
-//    },^() {
-//        NSLog(@"按钮2");
-//    },^() {
-//        NSLog(@"按钮3");
-//    }]];
-//    bu.frame = CGRectMake(100, 100, 100, 100);
-//    [self.view addSubview:bu];
+    /*
+     //测试坠落的弹出alertView
+    if (!self.downAlertView) {
+        self.downAlertView = [HJDownAlertView downAlertViewWithTitle:@"提示" contentText:@"你还没有开启通知,开启通知,实时掌握动态!\n是否现在去打开?" buttonTitle:@"确定" buttonBlock:nil];
+        self.downAlertView = [[HJDownAlertView alloc] init];
+        self.downAlertView.title = @"提示";
+        self.downAlertView.buttonTitle = @"确定";
+        self.downAlertView.buttonClick = ^() {
+            NSLog(@"111");
+        };
+        self.downAlertView.contentText = @"你还没有开启通知,开启通知,实时掌握动态!\n是否\n现在\n去打\n开h\nhhhhhhhhhh?";
+    }
+    [self.downAlertView show];
+   */
     
     /*
-    [self.view configTipViewHasData:NO hasError:YES reloadButtonBlock:^{
-        NSLog(@"没数据");
-    }];
+     //立方体按钮
+    CubeButton *bu = [CubeButton cubeButtonWithButtonTitles:@[@"按钮1", @"按钮2", @"按钮3"] buttonClick:@[^() {
+        NSLog(@"按钮1");
+    },^() {
+        NSLog(@"按钮2");
+    },^() {
+        NSLog(@"按钮3");
+    }]];
+    bu.frame = CGRectMake(100, 100, 100, 100);
+    [self.view addSubview:bu];
     */
-    button.selected = !button.selected;
-    button.selected ? [self.marquee startAnimation] : [self.marquee stopAnimation];
+     
+    static BOOL success = YES;
+    [self.view configTipViewHasData:NO hasError:success reloadButtonBlock:^{
+        NSLog(@"没数据");
+        success = NO;
+    }];
+    
+//    button.selected = !button.selected;
+//    button.selected ? [self.marquee startAnimation] : [self.marquee stopAnimation];
 }
 - (void)gwc {
     [self.navigationController pushViewController:[[HJShoppingCartController alloc] init] animated:YES];
@@ -97,6 +86,15 @@
     [self.view addSubview:button];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:(UIBarButtonSystemItemAdd) target:self action:@selector(gwc)];
+    
+    /*
+     定位
+     */
+    [[HJAuthorizeFunction shareAuthorize] startLocationWithSuccessBlock:^(CLLocation *location, CLPlacemark *placemark) {
+        NSLog(@"%@", placemark.subLocality);
+    } failed:^{
+        
+    }];
     
     /*
      //旋转的环形进度条
@@ -146,17 +144,20 @@
 //    [self.view hj_snapshotsWithType:(HJViewSnapshotsTypeSandbox)];
     // Do any additional setup after loading the view, typically from a nib.
     
-    HJJJJJJ *jajj = [[HJJJJJJ alloc] init];
-    NSLog(@"%f--%f", jajj.height, jajj.width);
     NSLog(@"====%d", [@"hsdfd" hj_isOnlyLetters]);
     
     
     _marquee  = [[HJMarqueeLabel alloc] init];
     _marquee.frame = CGRectMake(0, 200, 200, 40);
-    _marquee.text = @"12345678901234567890123456789012345678901234567890";
+    _marquee.textArray = @[@"12345678901234567890123456789012345678901234567890",@"fdsfdsfdslsdjfldsfjdsfjdlsjfdsjdsl"];
     _marquee.backgroundColor = [UIColor lightGrayColor];
     _marquee.textColor = [UIColor blueColor];
     [self.view addSubview:_marquee];
+    
+    
+    [self.input.rac_textSignal subscribeNext:^(id x) {
+        NSLog(@"%@", x);
+    }];
 }
 
 - (void)animationDidStart:(CAAnimation *)anim {}
