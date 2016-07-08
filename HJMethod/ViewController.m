@@ -15,7 +15,7 @@
 #import "CubeButton.h"
 #import "HJMarqueeLabel.h"  //跑马灯
 #import "HJAuthorizeFunction.h"
-
+#import <Photos/Photos.h>
 @interface ViewController ()
 /**hj*/
 @property (nonatomic, strong)HJDownAlertView *downAlertView;
@@ -89,14 +89,39 @@
     
     /*
      定位
+     [[HJAuthorizeFunction shareAuthorize] startLocationWithSuccessBlock:^(CLLocation *location, CLPlacemark *placemark) {
+     NSLog(@"%@", placemark.subLocality);
+     } failed:^{
+     
+     }];
      */
-    [[HJAuthorizeFunction shareAuthorize] startLocationWithSuccessBlock:^(CLLocation *location, CLPlacemark *placemark) {
-        NSLog(@"%@", placemark.subLocality);
-    } failed:^{
-        
+    
+    //检查
+    [[HJAuthorizeFunction shareAuthorize] authorizeLocationStatue:^(CLAuthorizationStatus status) {
+        NSLog(@"------------------____________%d", status);
     }];
     
-    /*
+    [[HJAuthorizeFunction shareAuthorize] authorizeNetworkStatue:^(CTCellularDataRestrictedState status) {
+        switch (status) {
+            case kCTCellularDataRestrictedStateUnknown:
+                NSLog(@"未知");
+                break;
+            case kCTCellularDataNotRestricted:
+                NSLog(@"无限制");
+                break;
+            case kCTCellularDataRestricted:
+                NSLog(@"限制");
+                break;
+        }
+    }];
+    
+    
+    [[HJAuthorizeFunction shareAuthorize] startPhotoAuthorize];
+    [[HJAuthorizeFunction shareAuthorize] startCameraAuthorize];
+    
+    [[HJAuthorizeFunction shareAuthorize] startAddressBookAuthorize];
+    
+        /*
      //旋转的环形进度条
     HJCircleColorView *circle = [[HJCircleColorView alloc] initWithFrame:CGRectMake(0, 44, 100, 100)];
     [circle startAnimation];

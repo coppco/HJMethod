@@ -884,7 +884,7 @@
 				INFOPLIST_FILE = HJMethod/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = cn.coppco.HJMethod12;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.coppco.HJMethod12gg;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -901,7 +901,7 @@
 				INFOPLIST_FILE = HJMethod/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = cn.coppco.HJMethod12;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.coppco.HJMethod12gg;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
