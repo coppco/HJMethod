@@ -23,7 +23,6 @@
 @property (nonatomic, copy)void (^locationSuccess)(CLLocation *location,CLPlacemark *placemark);
 //定位失败回调
 @property (nonatomic, copy)void (^locationFailed)();
-
 //联网权限
 @property (nonatomic, strong)CTCellularData *cellularData;
 @end
@@ -103,7 +102,7 @@
      };
      */
     if (finished) {
-        self.cellularData.cellularDataRestrictionDidUpdateNotifier = finished;
+        finished(self.cellularData.restrictedState);
     }
 }
 
@@ -141,7 +140,7 @@
 //请求访问相册
 - (void)startPhotoAuthorize {
     //还有就是UIImagePickerController也可以获取
-    if (kHJSystemVersion <= 8.0) {
+    if (kHJSystemVersion >= 8.0) {
         [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
         }];
     } else {
@@ -276,7 +275,7 @@
 
 #pragma mark - ==============推送相关===============
 
-- (void)authorizeAddressBookStatu1e:(void (^)(HJAddressBookAuthorizeStatue))finished {
+- (void)authorizeNotificationStatue:(void (^)(HJNotificationAuthorizeType))finished {
     NSUInteger value;
     if (kHJSystemVersion >= 8.0) {
         UIUserNotificationSettings *settings = [[UIApplication sharedApplication] currentUserNotificationSettings];

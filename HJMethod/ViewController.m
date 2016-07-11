@@ -16,6 +16,8 @@
 #import "HJMarqueeLabel.h"  //跑马灯
 #import "HJAuthorizeFunction.h"
 #import <Photos/Photos.h>
+#import <CoreTelephony/CTCellularData.h>  //联网权限
+
 @interface ViewController ()
 /**hj*/
 @property (nonatomic, strong)HJDownAlertView *downAlertView;
@@ -23,6 +25,8 @@
 /**<#描述#>*/
 @property (nonatomic, strong)HJMarqueeLabel *marquee;
 @property (weak, nonatomic) IBOutlet UITextField *input;
+/**<#描述#>*/
+@property (nonatomic, strong)CTCellularData *data1;
 @end
 
 @implementation ViewController
@@ -96,10 +100,10 @@
      }];
      */
     
-    //检查
-    [[HJAuthorizeFunction shareAuthorize] authorizeLocationStatue:^(CLAuthorizationStatus status) {
-        NSLog(@"------------------____________%d", status);
-    }];
+//    //检查
+//    [[HJAuthorizeFunction shareAuthorize] authorizeLocationStatue:^(CLAuthorizationStatus status) {
+//        NSLog(@"------------------____________%d", status);
+//    }];
     
     [[HJAuthorizeFunction shareAuthorize] authorizeNetworkStatue:^(CTCellularDataRestrictedState status) {
         switch (status) {
@@ -114,12 +118,13 @@
                 break;
         }
     }];
+    //    [[HJAuthorizeFunction shareAuthorize] startPhotoAuthorize];
+//    [[HJAuthorizeFunction shareAuthorize] startCameraAuthorize];
+//    [[HJAuthorizeFunction shareAuthorize] startAddressBookAuthorize];
     
-    
-    [[HJAuthorizeFunction shareAuthorize] startPhotoAuthorize];
-    [[HJAuthorizeFunction shareAuthorize] startCameraAuthorize];
-    
-    [[HJAuthorizeFunction shareAuthorize] startAddressBookAuthorize];
+//    [[HJAuthorizeFunction shareAuthorize] authorizeNetworkStatue:^(CTCellularDataRestrictedState status) {
+//        NSLog(@"00000000000000000000==%lu", (unsigned long)status);
+//    }];
     
         /*
      //旋转的环形进度条
@@ -136,7 +141,7 @@
 //    kColorFromRGBA(<#R#>, <#G#>, <#B#>, <#A#>)
 //
 //    NSString *string = @"1";
-    NSLog(@"%@", [NSString hj_pathCaches] );
+//    NSLog(@"%@", [NSString hj_pathCaches] );
 //
 //    [string writeToFile:[NSString pathCachesFileName:@"a.txt"] atomically:YES encoding:NSUTF8StringEncoding error:nil];
 //    [string writeToFile:[NSString pathCachesSubPath:@"a" fileName:@"a.txt"] atomically:YES encoding:NSUTF8StringEncoding error:nil];
@@ -146,17 +151,17 @@
     NSString *sti;
 //    UIApplicationDidBecomeActiveNotification
     NSDate *date = [NSDate dateWithTimeIntervalSinceNow:20121111];
-    XHJLog(@"%ld-%ld-%ld", date.year, date.month, date.day);
+//    XHJLog(@"%ld-%ld-%ld", date.year, date.month, date.day);
     [sti hj_isValidIndentifyNumber];
     
-    XHJLog(@"%.0f", [@"dsfjdslj大幅度是浪费了第三方了电视剧反垄断法律是放假了圣诞节发的是减肥了sdfdsdsfsdljfldsjlfksdjlsdjfdlsjlsdjflsdjlsdjflsdjlsdjflsa多少级分类的解放路上几分的减肥减肥fsdljfsldjflsjfdfjklsdfjslfldsjfldsjfdls" hj_heightForWidth:100 font:[UIFont systemFontOfSize:17]]);
+//    XHJLog(@"%.0f", [@"dsfjdslj大幅度是浪费了第三方了电视剧反垄断法律是放假了圣诞节发的是减肥了sdfdsdsfsdljfldsjlfksdjlsdjfdlsjlsdjflsdjlsdjflsdjlsdjflsa多少级分类的解放路上几分的减肥减肥fsdljfsldjflsjfdfjklsdfjslfldsjfldsjfdls" hj_heightForWidth:100 font:[UIFont systemFontOfSize:17]]);
     
 //    hj_callTelephoneNumber(@"15105713500", NO);
 
     NSString *string = hj_dictionaryOrArrayTransformToJSONString(@{@"a":@[@1, @2, @3], @"b":@"我们"});
-    XHJLog(@"字符串%@", string);
+//    XHJLog(@"字符串%@", string);
    NSDictionary *dic =  hj_JSONTransformToDictionaryOrArray(@"{\"a\":[1,2,3],\"b\":\"我们\"}");
-    XHJLog(@"字典%@", dic);
+//    XHJLog(@"字典%@", dic);
 
     //touchID
 //    [TouchID showTouchIdOnCompletion:^(BOOL success, NSError *authenticationError) {
@@ -165,11 +170,11 @@
 //        
 //    }];
     
-        XHJLog(@"%@", [@"123456" hj_safedStringWithType:(EncryptTypeMD5)]);
+//        XHJLog(@"%@", [@"123456" hj_safedStringWithType:(EncryptTypeMD5)]);
 //    [self.view hj_snapshotsWithType:(HJViewSnapshotsTypeSandbox)];
     // Do any additional setup after loading the view, typically from a nib.
     
-    NSLog(@"====%d", [@"hsdfd" hj_isOnlyLetters]);
+//    NSLog(@"====%d", [@"hsdfd" hj_isOnlyLetters]);
     
     
     _marquee  = [[HJMarqueeLabel alloc] init];
@@ -181,7 +186,7 @@
     
     
     [self.input.rac_textSignal subscribeNext:^(id x) {
-        NSLog(@"%@", x);
+//        NSLog(@"%@", x);
     }];
 }
 

@@ -165,7 +165,6 @@ static const NSString *kHJTipViewKey = @"HJTipViewKey";
             noDataContainer = aView;
         }
     }
-    NSLog(@"%@", noDataContainer);
     return noDataContainer;
 }
 
