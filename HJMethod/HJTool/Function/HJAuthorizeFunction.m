@@ -11,6 +11,7 @@
 #import <Photos/Photos.h>  //8.0后相册权限
 #import <AddressBook/AddressBook.h>   //9.0前通讯录
 #import <Contacts/Contacts.h>   //  9.0以后通讯录
+#import <Availability.h>
 
 #define kHJSystemVersion ([UIDevice currentDevice].systemVersion.floatValue)
 
@@ -40,7 +41,7 @@
 }
 
 - (void)openAppSetting {
-    //8.0 以后才可以
+    //8.0 以后才可以,这样判断kHJSystemVersion >= 8.0是运行时根据运行时的设备系统,而使用#ifdef #else #enfif  是在编译的时候,他决定于你编译时候的SDK版本
     if (kHJSystemVersion >= 8.0) {
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
     }
@@ -146,7 +147,9 @@
     } else {
         ALAssetsLibrary *assetsLibrary = [[ALAssetsLibrary alloc] init];
         [assetsLibrary enumerateGroupsWithTypes:(ALAssetsGroupAll) usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
+            
         } failureBlock:^(NSError *error) {
+            
         }];
     }
 }
@@ -312,6 +315,9 @@
             break;
         default:
             break;
+    }
+    if (self.locationFailed) {
+        self.locationFailed();
     }
 }
 //完成定位的代理方法
